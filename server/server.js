@@ -1,24 +1,24 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 
-
-//load env variables
+// load env variables
 if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').load();
+    require('dotenv').load()
 }
 
-//set port
+// set port
 const port = process.env.PORT
 
-//instantiate express
+// instantiate express
 const app = express()
 
-//use body parser
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
+// use body parser
+app.use(bodyParser.urlencoded({
+    extended: true
+}))
+app.use(bodyParser.json())
 
-//start server
+// start server
 app.listen(port, () => {
-    console.log('server started on: '+ port)
-
+    console.log('server started on: ' + port)
 })

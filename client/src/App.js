@@ -4,7 +4,15 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-     Write some code
+    Welcome to the Garden Guru
+
+
+ 
+      <p>Search bar</p>
+
+
+      
+
     </div>
   );
 }
