@@ -19,6 +19,10 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const handleLogin = () => {
+    console.log("logged in")
+}
+
 export default function NavBar() {
   const classes = useStyles();
 
@@ -32,7 +36,10 @@ export default function NavBar() {
           <Typography variant="h6" className={classes.title}>
             Garden Guru
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button 
+            color="inherit"
+            onClick={handleLogin}
+          >Login</Button>
         </Toolbar>
       </AppBar>
     </div>
