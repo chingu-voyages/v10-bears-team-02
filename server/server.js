@@ -18,11 +18,9 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(bodyParser.json())
 
-// build test route
-app.get('/api/test', (req, res) => {
-    console.log(req.body)
-    res.send({message: 'success'})
-})
+// handle react routing
+const router = require('./routes/routes')(null,null,app)
+app.use(router)
 
 // start server
 app.listen(port, () => {
