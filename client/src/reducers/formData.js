@@ -14,31 +14,18 @@ const initialState = {
     }
 }
 
-const store = {
-    formData: {
-        searchBar: {
-            query: '',
-        },
-        login: {
-            email: '',
-            password: ''
-        },
-        register: {
-            email: '',
-            username: '',
-            password: '',
-            verify_password: ''
-        }
-    },
-    userData: {
-        email: '',
-        username: '',
-        plantsLibrary: [],
-        currentPlant: {
-            name: '',
-            perennial: null
-        },
-        authenticated: false
-    },
-    searchResults: []
+export default (state = initialState, action) => {
+
+    switch(action.type) {
+        case 'UPDATE_QUERY_INPUT':
+            return {
+                ...state,
+                searchBar: {
+                    query: action.payload
+                }
+            }
+
+            default:
+                return state;
+    }
 }
