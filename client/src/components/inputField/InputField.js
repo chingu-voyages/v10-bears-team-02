@@ -1,13 +1,16 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import useStyles from './InputFieldStyles'
+import PropTypes from 'prop-types';
 
-export default function InputField() {
+function InputField(props) {
     const classes = useStyles();
 
     const [values, setValues] = React.useState({
-        query: ''
+        [props.name]: ''
       });
+
+      console.log(values)
     
     //   const handleInputChange = name => event => {
     //       console.log(event.target.value)
@@ -23,14 +26,20 @@ export default function InputField() {
                 id="standard-with-placeholder"
                 label="With placeholder"
                 placeholder="Placeholder"
+                name={props.name}
                 className={classes.textField}
                 margin="normal"
                 onChange={(event) => {
-                    setValues(event.target.value)
-                    console.log(values)
+                    setValues({ [event.target.name]: event.target.value })
                     }
                 }
             />
         </form>
     )
 }
+
+InputField.propTypes = {
+    name: PropTypes.string.isRequired
+}
+
+export default InputField
