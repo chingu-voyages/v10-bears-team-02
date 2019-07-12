@@ -5,27 +5,17 @@ import PropTypes from 'prop-types';
 
 function InputField(props) {
     const classes = useStyles();
+    console.log(props)
 
     const [values, setValues] = React.useState({
         [props.name]: ''
       });
 
-      console.log(values)
-    
-    //   const handleInputChange = name => event => {
-    //       console.log(event.target.value)
-    //     //   debugger
-    //     setValues({ ...values, [name]: event.target.value });
-    //     console.log()
-    //   };
-
     return (
-
-        <form className={classes.container} noValidate autoComplete="off">
             <TextField
-                id="standard-with-placeholder"
-                label="With placeholder"
-                placeholder="Placeholder"
+                id={props.name}
+                label={props.label}
+                placeholder={props.placeholder}
                 name={props.name}
                 className={classes.textField}
                 margin="normal"
@@ -34,7 +24,6 @@ function InputField(props) {
                     }
                 }
             />
-        </form>
     )
 }
 

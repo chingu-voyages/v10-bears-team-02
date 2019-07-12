@@ -1,7 +1,7 @@
 import React from 'react';
 import NavBar from './components/navBar/NavBar'
 import './App.css';
-import InputField from './components/inputField/InputField'
+import SearchBar from './components/searchBar/SearchBar'
 
 
 
@@ -10,7 +10,7 @@ function App() {
     <div className="App">
  
       <NavBar/>
-      <InputField name='query'/>
+      <SearchBar />
     </div>
   );
 }
