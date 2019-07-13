@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import useStyles from './InputFieldStyles'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { updateQueryInput } from '../../actions/formData';
 
 function InputField(props) {
     const classes = useStyles();
@@ -32,10 +33,14 @@ InputField.propTypes = {
     name: PropTypes.string.isRequired
 }
 
-const mapDispatchToProps = (state) => ({
-    updateQueryInput: state.updateQueryInput
-})
+// const mapDispatchToProps = (dispatch) => {
+//     debugger
+//    return {
+//     updateQueryInput: () => {
+//         dispatch(updateQueryInput())
+//     }
+// }}
 
 
 
-export default connect(null, mapDispatchToProps)(InputField)
+export default connect(null, {updateQueryInput})(InputField)
