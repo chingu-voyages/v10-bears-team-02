@@ -1,6 +1,6 @@
 // ACTION CREATORS - functions that go to the reducer
 
-const updateQueryInput = (data) => {
+export const updateQueryInput = (data) => {
     return {
         type: 'UPDATE_QUERY_INPUT',
         data
