@@ -1,10 +1,19 @@
 import thunk from 'redux-thunk'
+import {
+    createStore,
+    applyMiddleware,
+    combineReducers,
+    compose
+} from 'redux';
+import formData from './reducers/formData';
 
 const rootReducer = combineReducers({
-    // reducers go here
+    formData
 })
 
 const middleware = [thunk]
+
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
     rootReducer,
