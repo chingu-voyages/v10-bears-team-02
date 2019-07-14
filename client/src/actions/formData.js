@@ -1,4 +1,5 @@
 // ACTION CREATORS - functions that go to the reducer
+const axios = require('axios');
 
 export const updateQueryInput = (data) => {
     return {
@@ -7,30 +8,22 @@ export const updateQueryInput = (data) => {
     }
 }
 
-const queryAPI = () => {
+const queryAPI = () => {     
     return {
         type: 'SUBMIT_QUERY'
     }
 }
 
-
-
 // ASYNCHRONOUS ACTIONS - make calls to the API
 
 export const submitQuery = (query) => {
-    debugger
-    return dispatch => {
-        dispatch(queryAPI())
-        return fetch(`/api/query`), {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: {
-                query: query
-            }
-        }
-        .then(response => response.json())
-        .then(data => console.log(data))
+    return (dispatch, ) => {    
+      
+        return axios.post('/api/query', {query: query})        
+                .then(data => {
+                    dispatch(queryAPI())        
+                    console.log({ data: data })
+                }
+        )
     }
 }

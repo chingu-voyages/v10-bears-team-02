@@ -9,9 +9,17 @@ function routes(err,db,app){
     } else {
         // add passport stuff here
         router.route('/api/test')
-        .get((req, res) => {
-            console.log(req.body)
+        .get((req, res) => {        
+            console.log(req)
             res.send({message: 'success'})
+        })
+
+
+        //Trefle search query api end point
+        router.route('/api/query')
+            .post((req, res) => {    
+                console.log(req.body)
+                res.send(req.body)
         })
     }
     return router

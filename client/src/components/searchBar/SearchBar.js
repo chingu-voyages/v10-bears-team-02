@@ -8,17 +8,22 @@ function SearchBar(props) {
 
     const classes = useStyles();
 
-    // const handleSearchSubmit = (event) => {
-    //     event.preventDefault()
-    //     console.log(event.type)
-    // }
-
     return (
-        <form className={classes.container} onSubmit={(event) => props.submitQuery(event.target.value)}>
+        <form className={classes.container} onSubmit={(event) => {
+                event.preventDefault()
+                props.submitQuery(props.query)
+            }
+        }>
             <InputField name='query' label='Search for a plant'/>
             <button>Search</button>
         </form>
     )
 }
 
-export default connect(null, { submitQuery })(SearchBar)
+function mapStateToProps(state) {    
+    return {
+        query: state.formData.searchBar.query
+    }
+}
+
+export default connect(mapStateToProps, { submitQuery })(SearchBar)
