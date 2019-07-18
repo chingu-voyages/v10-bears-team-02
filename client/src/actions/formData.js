@@ -14,14 +14,16 @@ const queryAPI = () => {
     }
 }
 
+
+
 // ASYNCHRONOUS ACTIONS - make calls to the API
 
 export const submitQuery = (query) => {
-    return (dispatch, ) => {    
-      
+    return (dispatch) => {    
+        dispatch(queryAPI())   
         return axios.post('/api/query', {query: query})        
                 .then(data => {
-                    dispatch(queryAPI())        
+                        
                     console.log({ data: data })
                 }
         )
