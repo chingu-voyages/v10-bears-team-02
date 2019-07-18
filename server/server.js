@@ -18,7 +18,14 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(bodyParser.json())
 
+// build test route
+app.get('/api/test', (req, res) => {
+    console.log(req.body)
+    res.send({message: 'success'})
+})
+
 // start server
 app.listen(port, () => {
     console.log('server started on: ' + port)
 })
+
