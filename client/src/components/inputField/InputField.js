@@ -2,6 +2,8 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import useStyles from './InputFieldStyles'
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { updateQueryInput } from '../../actions/formData';
 
 function InputField(props) {
     const classes = useStyles();
@@ -20,7 +22,7 @@ function InputField(props) {
                 className={classes.textField}
                 margin="normal"
                 onChange={(event) => {
-                    setValues({ [event.target.name]: event.target.value })
+                    props.updateQueryInput(event.target.value)
                     }
                 }
             />
@@ -31,4 +33,14 @@ InputField.propTypes = {
     name: PropTypes.string.isRequired
 }
 
-export default InputField
+// const mapDispatchToProps = (dispatch) => {
+//     debugger
+//    return {
+//     updateQueryInput: () => {
+//         dispatch(updateQueryInput())
+//     }
+// }}
+
+
+
+export default connect(null, {updateQueryInput})(InputField)
