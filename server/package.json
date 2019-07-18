@@ -17,7 +17,8 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "helmet": "^3.15.1",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "lodash": ">=4.17.13"
   },
   "devDependencies": {
     "concurrently": "^4.1.0",
