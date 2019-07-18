@@ -1,35 +1,29 @@
 const axios = require('axios');
 
 // ACTION CREATORS - functions that go to the reducer
-const queryAPI = () => {
+
+
+const queryPlantsAPI = () => {     
     return {
         type: 'SUBMIT_QUERY'
     }
 }
 
+const setPlants = (payload) => {
+    return {
+        type: 'GET_PLANTS_SUCCESS', 
+        payload
+    }
+}
 
 // ASYNCHRONOUS ACTIONS - make calls to the API
-
 export const submitQuery = (query) => {
-    debugger
-    return dispatch => {
-        dispatch(queryAPI())
-        console.log(query)
-        
-        // axios.get('/api/query')
-        // .then((data) => {
-        //     console.log(data)
-        // })
-        // return fetch(`/api/query`), {
-        //     method: 'POST',
-        //     headers: {
-        //         "Content-Type": "application/json"
-        //     },
-        //     body: {
-        //         query: query
-        //     }
-        // }
-        // .then(response => response.json())
-        // .then(data => console.log(data))
+    return (dispatch) => {    
+        dispatch(queryPlantsAPI())   
+        return axios.post('/api/query', {query: query})        
+            .then(response => {               
+                dispatch(setPlants(response.data))
+            }
+        )
     }
 }

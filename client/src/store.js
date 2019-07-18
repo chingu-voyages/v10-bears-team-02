@@ -6,9 +6,11 @@ import {
     compose
 } from 'redux';
 import formData from './reducers/formData';
+import searchResults from './reducers/searchResults'
 
 const rootReducer = combineReducers({
-    formData
+    formData, 
+    searchResults
 })
 
 const middleware = [thunk]
@@ -19,8 +21,6 @@ const store = createStore(
     rootReducer,
     composeEnhancer(applyMiddleware(...middleware))
 )
-
-console.log(store)
 
 export default store;
 
