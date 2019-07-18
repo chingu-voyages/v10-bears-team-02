@@ -21,10 +21,9 @@ export const submitQuery = (query) => {
     return (dispatch) => {    
         dispatch(queryPlantsAPI())   
         return axios.post('/api/query', {query: query})        
-                .then(data => {
-                     dispatch(setPlants(data))
-                    //console.log({ data: data })
-                }
+            .then(response => {               
+                dispatch(setPlants(response.data))
+            }
         )
     }
 }

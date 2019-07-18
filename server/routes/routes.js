@@ -22,8 +22,7 @@ function routes(err,db,app){
           .post((req, res) => {                     
             let url = process.env.TREFLE_API + '/plants?token=' + process.env.TREFLE_KEY + '&q=' + req.body.query
             request(url, { json: true }, (err, response, body) => {
-              if (err) return res.send({ error: err.toString })
-              console.log(body)
+              if (err) return res.send({ error: err.toString })          
               res.send(body)
             })             
           })
