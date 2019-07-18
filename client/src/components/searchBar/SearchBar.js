@@ -1,21 +1,29 @@
 import React from 'react'
 import InputField from '../inputField/InputField'
 import useStyles from './SearchBarStyles'
+import { submitQuery } from '../../actions/formData'
+import { connect } from 'react-redux'
 
-function SearchBar() {
+function SearchBar(props) {
 
     const classes = useStyles();
 
-    const handleSearchSubmit = (event) => {
-        event.preventDefault()
-        console.log(event.type)
-    }
     return (
-        <form className={classes.container} onSubmit={(event) => handleSearchSubmit(event)}>
+        <form className={classes.container} onSubmit={(event) => {
+                event.preventDefault()
+                props.submitQuery(props.query)
+            }
+        }>
             <InputField name='query' label='Search for a plant'/>
             <button>Search</button>
         </form>
     )
 }
 
-export default SearchBar
+function mapStateToProps(state) {    
+    return {
+        query: state.formData.searchBar.query
+    }
+}
+
+export default connect(mapStateToProps, { submitQuery })(SearchBar)

@@ -13,26 +13,25 @@ function routes(err,db,app){
     } else {
         // add passport stuff here
         router.route('/api/test')
-        .get((req, res) => {
-            console.log(req.body)
+        .get((req, res) => {        
+            console.log(req)
             res.send({message: 'success'})
         })
       
-      router.route('/api/query')
-        .get((req, res) => {
-          //console.log(req)
-          if (true) { 
-            let url = process.env.TREFLE_API + '/plants?token=' + process.env.TREFLE_KEY + '&q=' + req.body.query
-            request(url, { json: true }, (err, response, body) => {
-              if (err) return res.send({ error: err.toString })
-              console.log(body)
-              res.send(body)
-            })
-          } else {
-            res.end()
-          }
-          
-        })
+        router.route('/api/query')
+          .get((req, res) => {
+            //console.log(req)
+            if (true) { 
+              let url = process.env.TREFLE_API + '/plants?token=' + process.env.TREFLE_KEY + '&q=' + req.body.query
+              request(url, { json: true }, (err, response, body) => {
+                if (err) return res.send({ error: err.toString })
+                console.log(body)
+                res.send(body)
+              })
+            } else {
+              res.end()
+            }          
+          })
     }
     return router
 }
