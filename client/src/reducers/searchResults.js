@@ -1,16 +1,11 @@
-const initialState = {
-    list : []
-}
+const initialState = []
 
 export default (state = initialState, action) => {
 
-    switch(action.type) {
-        case 'STORE_PLANT_QUERY_RESULTS':
-                return {
-                    ...state, 
-                    list: action.payload
-                }
-     
+    switch (action.type) {                           
+        
+        case 'GET_PLANTS_SUCCESS':
+            return action.payload   
 
             default:
                 return state;

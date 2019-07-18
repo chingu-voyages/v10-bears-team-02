@@ -1,7 +1,7 @@
 import React from 'react'
 import InputField from '../inputField/InputField'
 import useStyles from './SearchBarStyles'
-import { submitQuery } from '../../actions/formData'
+import { submitQuery } from '../../actions/searchResults'
 import { connect } from 'react-redux'
 
 function SearchBar(props) {

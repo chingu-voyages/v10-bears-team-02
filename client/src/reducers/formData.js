@@ -24,11 +24,7 @@ export default (state = initialState, action) => {
                     query: action.data
                 }
             }   
-        
-        case "SUBMIT_QUERY":
-            return {
-                ...state
-            }
+    
 
         default:
             return state;
