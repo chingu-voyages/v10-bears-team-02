@@ -7,11 +7,6 @@ import { updateQueryInput } from '../../actions/formData';
 
 function InputField(props) {
     const classes = useStyles();
-    console.log(props)
-
-    const [values, setValues] = React.useState({
-        [props.name]: ''
-      });
 
     return (
             <TextField
@@ -32,15 +27,5 @@ function InputField(props) {
 InputField.propTypes = {
     name: PropTypes.string.isRequired
 }
-
-// const mapDispatchToProps = (dispatch) => {
-//     debugger
-//    return {
-//     updateQueryInput: () => {
-//         dispatch(updateQueryInput())
-//     }
-// }}
-
-
 
 export default connect(null, {updateQueryInput})(InputField)

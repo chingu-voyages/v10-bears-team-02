@@ -10,22 +10,27 @@ const initialState = {
         email: '',
         username: '',
         password: '',
-        verify_password: ''
+        verifyPassword: ''
     }
 }
 
-export default (state = initialState, action) => {
-
-    switch(action.type) {
+export default (state = initialState, action) => {   
+    switch (action.type) {
+       
         case 'UPDATE_QUERY_INPUT':
             return {
                 ...state,
                 searchBar: {
-                    query: action.payload
+                    query: action.data
                 }
+            }   
+        
+        case "SUBMIT_QUERY":
+            return {
+                ...state
             }
 
-            default:
-                return state;
+        default:
+            return state;
     }
 }
