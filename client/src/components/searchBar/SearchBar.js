@@ -1,5 +1,6 @@
 import React from 'react'
 import InputField from '../inputField/InputField'
+import Button from '@material-ui/core/Button'
 import useStyles from './SearchBarStyles'
 import { submitQuery } from '../../actions/searchResults'
 import { connect } from 'react-redux'
@@ -15,7 +16,7 @@ function SearchBar(props) {
             }
         }>
             <InputField name='query' label='Search for a plant'/>
-            <button>Search</button>
+            <Button color='primary'>Search</Button>
         </form>
     )
 }
