@@ -5,7 +5,6 @@ import useStyles from './SearchBarStyles'
 import { submitQuery } from '../../actions/searchResults'
 import { connect } from 'react-redux'
 import SearchIcon from '@material-ui/icons/Search';
-import InputBase from '@material-ui/core/InputBase'
 
 function SearchBar(props) {
 
@@ -21,33 +20,12 @@ function SearchBar(props) {
          <div>
              <InputField color='white' name='query' label='Search for a plant'/>
         </div>
-        <Button color='primary' variant='outlined'>             
+        <Button color='primary' variant='outlined' type='submit'>             
             <SearchIcon /> 
         </Button>
         </form>
     )
 
-    // return (
-    //     <form className={classes.search}
-    //         onSubmit={(event) => {
-    //             event.preventDefault()
-    //             props.submitQuery(props.query)
-    //         }}
-    //     >
-            // <div className={classes.searchIcon}>
-            //     <SearchIcon />
-            // </div>
-    //         <InputBase
-    //         placeholder="Search for a plant"
-    //         classes={{
-    //             root: classes.inputRoot,
-    //             input: classes.inputInput,
-    //         }}
-    //         inputProps={{ 'aria-label': 'Search for a plant' }}
-    //         />
-    //         <Button color='primary'>Search</Button>
-    //   </form>
-    // )
 }
 
 function mapStateToProps(state) {    
