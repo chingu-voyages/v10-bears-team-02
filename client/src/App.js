@@ -10,10 +10,8 @@ import PlantCard from './components/plantCard/PlantCard';
 function App() {
   return (
     <div className="App">
- 
       <NavBar />
       <SearchBar />
-      <PlantCard />
       <QueriedPlants />
     </div>
   );
