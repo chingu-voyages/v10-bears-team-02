@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchBar from '../../components/searchBar/SearchBar'
+import './NavBar2Styles'
 
 import axios from 'axios';
 

@@ -11,32 +11,43 @@ function SearchBar(props) {
 
     const classes = useStyles();
 
+    return (
+
+        <form className={classes.search} onSubmit={(event) => {
+                event.preventDefault()
+                props.submitQuery(props.query)
+            }
+        }>         
+         <div>
+             <InputField color='white' name='query' label='Search for a plant'/>
+        </div>
+        <Button color='primary' variant='outlined'>             
+            <SearchIcon /> 
+        </Button>
+        </form>
+    )
+
     // return (
-    //     <form className={classes.search} onSubmit={(event) => {
+    //     <form className={classes.search}
+    //         onSubmit={(event) => {
     //             event.preventDefault()
     //             props.submitQuery(props.query)
-    //         }
-    //     }>
-    //         <InputField name='query' label='Search for a plant'/>
+    //         }}
+    //     >
+            // <div className={classes.searchIcon}>
+            //     <SearchIcon />
+            // </div>
+    //         <InputBase
+    //         placeholder="Search for a plant"
+    //         classes={{
+    //             root: classes.inputRoot,
+    //             input: classes.inputInput,
+    //         }}
+    //         inputProps={{ 'aria-label': 'Search for a plant' }}
+    //         />
     //         <Button color='primary'>Search</Button>
-    //     </form>
+    //   </form>
     // )
-
-    return (
-        <div className={classes.search}>
-            <div className={classes.searchIcon}>
-                <SearchIcon />
-            </div>
-            <InputBase
-            placeholder="Search for Plants"
-            classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-            }}
-            inputProps={{ 'aria-label': 'Search for Plants' }}
-            />
-      </div>
-    )
 }
 
 function mapStateToProps(state) {    
