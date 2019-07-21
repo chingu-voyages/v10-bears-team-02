@@ -11,12 +11,12 @@ function RenderPlants(props) {
     return props.plants ? (
         props.plants.map((plant, index) => {
             return (
-                <>
-                <Divider />
-                <ListItemLink href={"/plant/" + plant.id} key={index}>
-                    <ListItemText primary={plant.common_name} />
-                </ListItemLink>
-                </>
+                <div key={index}>
+                    <Divider />
+                    <ListItemLink href={"/plant/" + plant.id} >
+                        <ListItemText primary={plant.common_name} />
+                    </ListItemLink>
+                </div>
             )
         })
     ) : null
