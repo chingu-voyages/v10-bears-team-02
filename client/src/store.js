@@ -50,5 +50,6 @@ export default store;
 //         },
 //         authenticated: false
 //     },
+//     currentPlant:{}       
 //     searchResults: []
 // }
