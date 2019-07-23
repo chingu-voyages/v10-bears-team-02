@@ -20,12 +20,25 @@ function routes(err,db,app){
       
         router.route('/api/query')
           .post((req, res) => {                     
-            let url = process.env.TREFLE_API + '/plants?token=' + process.env.TREFLE_KEY + '&q=' + req.body.query
+            let url = process.env.TREFLE_API + '/plants?token=' + process.env.TREFLE_KEY + '&q=' + req.body.query           
             request(url, { json: true }, (err, response, body) => {
               if (err) return res.send({ error: err.toString })          
               res.send(body)
             })             
           })
+          
+        router.route('/api/plant')
+          .post((req, res) => { 
+            console.log(req.body)
+            let url = process.env.TREFLE_API + '/plants/' + req.body.id + '?token=' + process.env.TREFLE_KEY 
+            request(url, { json: true }, (err, response, body) => {
+              console.log(body)
+              if (err) return res.send({ error: err.toString })          
+              res.send(body)
+            })     
+
+          })
+      
     }
     return router
 }

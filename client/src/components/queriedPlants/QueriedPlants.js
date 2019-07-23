@@ -8,6 +8,7 @@ import Divider from '@material-ui/core/Divider';
 
 
 function RenderPlants(props) {
+    console.log(props)
     return props.plants ? (
         props.plants.map((plant, index) => {
             return (

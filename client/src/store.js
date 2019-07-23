@@ -7,10 +7,14 @@ import {
 } from 'redux';
 import formData from './reducers/formData';
 import searchResults from './reducers/searchResults'
+import plantStats from './reducers/plantStats'
 
 const rootReducer = combineReducers({
     formData, 
-    searchResults
+    searchResults, 
+    currentPlant: plantStats
+
+
 })
 
 const middleware = [thunk]
@@ -50,5 +54,6 @@ export default store;
 //         },
 //         authenticated: false
 //     },
+//     currentPlant:{}       
 //     searchResults: []
 // }
