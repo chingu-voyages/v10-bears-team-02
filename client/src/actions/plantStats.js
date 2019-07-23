@@ -1,9 +1,5 @@
 const axios = require('axios')
 
-
-
-
-
 //Action Creator
 
 /**
@@ -11,6 +7,7 @@ const axios = require('axios')
  */
 const querySinglePlant = () => { 
     return {
+        
         type: 'QUERY_SINGLE_PLANT'
     }
 }
@@ -29,13 +26,15 @@ const getPlantStats = (data) => {
 
 //Action
 
-export const fetchPlantStats = (id) =>{
-
+export const fetchPlantStats = (id) => {
+   // console.log({id:id})
     return (dispatch) => {    
-        dispatch(querySinglePlant())   
-        return axios.post('/api/query/', {id: id})        
+        //console.log('after return')
+       dispatch(querySinglePlant())   
+    
+        return axios.post('/api/plant', {id: id})        
             .then(response => {               
-                dispatch(getPlantStats(response.data))
+                dispatch(getPlantStats(response.data)) 
             }
         )
     }

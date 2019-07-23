@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
 import useStyles from './SinglePlantStyles'
+import { fetchPlantStats } from '../../actions/plantStats'
 
 
 function SinglePlant(props) {
     const classes = useStyles()
 
-    useEffect((event) => { 
-        
+    useEffect(() => {  
+    
+            fetchPlantStats(props.match.params.id)
     }, [props.match.params.id])
 
 
@@ -25,4 +27,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(SinglePlant)
+export default connect(mapStateToProps, {fetchPlantStats})(SinglePlant)

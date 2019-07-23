@@ -18,8 +18,10 @@ const setPlants = (payload) => {
 
 // ASYNCHRONOUS ACTIONS - make calls to the API
 export const submitQuery = (query) => {
+   
     return (dispatch) => {    
         dispatch(queryPlantsAPI())   
+        
         return axios.post('/api/query', {query: query})        
             .then(response => {               
                 dispatch(setPlants(response.data))
