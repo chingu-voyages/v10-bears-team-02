@@ -26,6 +26,13 @@ function routes(err,db,app){
               res.send(body)
             })             
           })
+          
+        router.route('/api/plant')
+          .post((req, res) => { 
+            let url = process.env.TREFLE_API + 
+
+          })
+      
     }
     return router
 }
