@@ -15,10 +15,10 @@ const querySinglePlant = () => {
 /** 
  * @param {String} data  plant id
  */
-const getPlantStats = (data) => {
+const getPlantStats = (payload) => {
     return {
         type: 'GET_PLANT_STATS',
-        data
+        payload
     }
 }
 
@@ -27,13 +27,14 @@ const getPlantStats = (data) => {
 //Action
 
 export const fetchPlantStats = (id) => {
-   // console.log({id:id})
+    console.log({id:id})
     return (dispatch) => {    
-        //console.log('after return')
+        console.log('after return')
        dispatch(querySinglePlant())   
     
         return axios.post('/api/plant', {id: id})        
-            .then(response => {               
+            .then(response => {     
+                console.log(response)
                 dispatch(getPlantStats(response.data)) 
             }
         )
