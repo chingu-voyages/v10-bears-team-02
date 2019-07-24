@@ -4,6 +4,18 @@ import useStyles from './SinglePlantStyles'
 import  { fetchPlantStats }   from '../../actions/plantStats'
 
 
+
+function RenderPlant(props){
+    console.log(props.data)
+    return (
+        <div>
+            Test
+        </div>
+    )
+}
+
+
+
 function SinglePlant(props) {
     const classes = useStyles()
 
@@ -13,17 +25,19 @@ function SinglePlant(props) {
     }, [props])
 
 
+
+
     return (
         <div className={classes.root}>
-            plant id:
-            {props.match.params.id}
+           <RenderPlant />
+           
       </div>
     )
 }
 
 function mapStateToProps(state) {
     return {
-        plants: state.searchResults
+        plant: state.searchResults
     }
 }
 
