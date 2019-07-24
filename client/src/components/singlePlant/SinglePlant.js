@@ -48,12 +48,10 @@ function RenderPlant(props){
             Lorem ipsum dolor
           </Typography>
         </ExpansionPanelDetails>
-      </ExpansionPanel>
-           
+      </ExpansionPanel>           
         </div>
     )
 }
-
 
 
 function SinglePlant(props) {
