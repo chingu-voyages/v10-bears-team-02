@@ -246,7 +246,8 @@ function formatPlant(oldObject) {
         },
 
         meta: {
-            id:  oldObject.id           
+            id: oldObject.id, 
+            image_urls: oldObject.images
         }
     }
 
