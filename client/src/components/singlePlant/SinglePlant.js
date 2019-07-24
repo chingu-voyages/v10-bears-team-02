@@ -4,26 +4,40 @@ import useStyles from './SinglePlantStyles'
 import  { fetchPlantStats }   from '../../actions/plantStats'
 
 
+
+function RenderPlant(props){
+    console.log(props.plant)
+    return (
+        <div>
+           
+        </div>
+    )
+}
+
+
+
 function SinglePlant(props) {
     const classes = useStyles()
-
+    const { fetchPlantStats } = props
+    const { id } = props.match.params
+    console.log(props)
     useEffect(() => {  
     
-            props.fetchPlantStats(props.match.params.id)
-    }, [props])
+            fetchPlantStats(id)
+    }, [id, fetchPlantStats])
 
 
     return (
         <div className={classes.root}>
-            plant id:
-            {props.match.params.id}
+            <RenderPlant plant={props.plant} />
       </div>
     )
 }
 
 function mapStateToProps(state) {
+    console.log(state)
     return {
-        plants: state.searchResults
+        plant: state.currentPlant
     }
 }
 
