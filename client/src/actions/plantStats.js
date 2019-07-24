@@ -26,15 +26,12 @@ const getPlantStats = (payload) => {
 
 //Action
 
-export const fetchPlantStats = (id) => {
-    console.log({id:id})
-    return (dispatch) => {    
-        console.log('after return')
+export const fetchPlantStats = (id) => {    
+    return (dispatch) => {            
        dispatch(querySinglePlant())   
     
         return axios.post('/api/plant', {id: id})        
-            .then(response => {     
-                console.log(response)
+            .then(response => {                    
                 dispatch(getPlantStats(response.data)) 
             }
         )
