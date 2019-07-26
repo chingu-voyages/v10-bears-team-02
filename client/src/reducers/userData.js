@@ -1,5 +1,3 @@
-
-
 const initialState = {
     email: '',
     username: '',
@@ -9,4 +7,11 @@ const initialState = {
         perennial: null
     },
     authenticated: false
+}
+
+export default (state = initialState, action) => {
+    switch (action.type) {
+        default:
+            return state
+    }
 }
