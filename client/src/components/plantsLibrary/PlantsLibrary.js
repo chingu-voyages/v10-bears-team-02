@@ -14,10 +14,12 @@ import useStyles from './PlantsLibraryStyles'
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 import PlantCard from '../../components/plantCard/PlantCard';
+import { connect } from 'react-redux';
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-export default function Album() {
+function PlantsLibrary(props) {
+  // hardcode cards until setup CRUD API on backend
+  // const cards = props.plants;
+  const cards = [1,2,3,4,5,6,7]
   const classes = useStyles();
   return (
     <React.Fragment>
@@ -40,9 +42,9 @@ export default function Album() {
                   </Button>
                 </Grid>
                 <Grid item>
-                  <Button variant="outlined" color="primary">
+                  {/* <Button variant="outlined" color="primary">
                     Secondary action
-                  </Button>
+                  </Button> */}
                 </Grid>
               </Grid>
             </div>
@@ -54,6 +56,7 @@ export default function Album() {
             {cards.map(card => (
               <Grid item key={card} xs={12} sm={6} md={4}>
                 <PlantCard />
+
                 {/* <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
@@ -96,3 +99,11 @@ export default function Album() {
     </React.Fragment>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    plants: state.userData.plantsLibrary
+  }
+}
+
+export default connect(mapStateToProps)(PlantsLibrary)
