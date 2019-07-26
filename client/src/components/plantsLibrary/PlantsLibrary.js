@@ -101,6 +101,7 @@ function PlantsLibrary(props) {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
     plants: state.userData.plantsLibrary
   }
