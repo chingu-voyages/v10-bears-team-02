@@ -8,11 +8,13 @@ import {
 import formData from './reducers/formData';
 import searchResults from './reducers/searchResults'
 import plantStats from './reducers/plantStats'
+import userData from './reducers/userData';
 
 const rootReducer = combineReducers({
     formData, 
     searchResults, 
-    currentPlant: plantStats
+    currentPlant: plantStats,
+    userData
 
 
 })
