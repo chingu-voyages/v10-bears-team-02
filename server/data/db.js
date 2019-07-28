@@ -31,9 +31,9 @@ function connect(){
                     },
                     authenticated: Boolean
                 })
-                let doc = mongoose.model('User', userSchema)    
-                console.log(doc)
-                resolve(doc)
+                let doc = mongoose.model('User', userSchema)                    
+               resolve(doc)
+               
            },(err)=>{
                console.log('Database error:' + err)
                reject(err)
