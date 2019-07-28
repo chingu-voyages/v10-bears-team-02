@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 
 // handle routing
-const router //= require('./routes/routes')(null,null,app)
+var router //= require('./routes/routes')(null,null,app)
 //app.use(router)
 
 
