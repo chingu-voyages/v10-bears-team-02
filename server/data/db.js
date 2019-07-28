@@ -8,8 +8,7 @@ if (process.env.NODE_ENV !== 'production') {
 //returns a promise resolving to a database object
 function connect(){
 
-    return new Promise((resolve, reject)=>{
-    
+    return new Promise((resolve, reject)=>{    
       
         if(database){
             //already connected to db 

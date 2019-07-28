@@ -10,7 +10,7 @@ if (process.env.NODE_ENV !== 'production') {
 // test connection to database
 function routes(err,db,app){
     if(err){
-        // handle error
+        // err is databse conenction err, no user functionality, declare routes accordingly. (remove user authorized routes)
     } else {
         // add passport stuff here
         router.route('/api/test')
