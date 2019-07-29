@@ -6,6 +6,7 @@ import QueriedPlants from './components/queriedPlants/QueriedPlants';
 import PlantCard from './components/plantCard/PlantCard';
 import SinglePlant from './components/singlePlant/SinglePlant'
 import PlantsLibrary from './components/plantsLibrary/PlantsLibrary';
+import SinglePlant from './components/singlePlant/SinglePlant'
 import { Route } from "react-router-dom";
 
 

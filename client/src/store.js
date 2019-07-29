@@ -15,8 +15,6 @@ const rootReducer = combineReducers({
     searchResults, 
     currentPlant: plantStats,
     userData
-
-
 })
 
 const middleware = [thunk]
