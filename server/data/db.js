@@ -23,11 +23,18 @@ function connect(){
                 let userSchema = new Schema({
                     email: String,
                     username: String,
-                    plantsLibrary: Array,
-                    authenticated: Boolean,
+                    plantsLibrary: {
+                        type: Array,
+                        default: []
+                    },
+                    authenticated: {
+                        type: Boolean,
+                        default: false
+                    },
                     currentPlant: {
                         type: Map,
-                        of: String
+                        of: String,
+                        default: {}
                     }
                 })
                 let doc = mongoose.model('User', userSchema, 'Users')                    

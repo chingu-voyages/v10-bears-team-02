@@ -45,10 +45,10 @@ function routes(err,doc,app){
           router.route('/api/users/create')
           .post((req,res) => {
             doc.create({
-              email: 3,
+              email: 'test email',
               username: 'test username',
               plantsLibrary: [],
-              authenticated: true,
+              authenticated: false,
               currentPlant: {
                   name: 'a plant',
                   perennial: 'maybe'
