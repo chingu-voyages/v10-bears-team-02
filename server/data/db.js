@@ -24,11 +24,11 @@ function connect(){
                     email: String,
                     username: String,
                     plantsLibrary: Array,
+                    authenticated: Boolean,
                     currentPlant: {
-                        name: String,
-                        perennial: String
-                    },
-                    authenticated: Boolean
+                        type: Map,
+                        of: String
+                    }
                 })
                 let doc = mongoose.model('User', userSchema, 'Users')                    
                resolve(doc)

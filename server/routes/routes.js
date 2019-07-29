@@ -41,13 +41,33 @@ function routes(err,doc,app){
 
           })
 
+          // create user
+          router.route('/api/users/create')
+          .post((req,res) => {
+            doc.create({
+              email: 3,
+              username: 'test username',
+              plantsLibrary: [],
+              authenticated: true,
+              currentPlant: {
+                  name: 'a plant',
+                  perennial: 'maybe'
+              }
+            },function(err,user){
+            res.send({user,err})
+            })
+          })
+
           // create
           router.route('/api/library/create')
           .post((req, res) => {
-            doc.create({email: 'test@123.com', username: 'test3'},function(err, userdata) {
-              console.log(userdata)
-              res.send(userdata)
+            doc.create({},function(err,user){
+              res.send(user)
             })
+            // doc.create({email: 'test@123.com', username: 'test3'},function(err, userdata) {
+            //   console.log(userdata)
+            //   res.send(userdata)
+            // })
           })
 
           // query
