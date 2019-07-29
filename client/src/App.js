@@ -3,7 +3,7 @@ import NavBar from './components/navbar/NavBar'
 import SearchBar from './components/searchBar/SearchBar'
 import './App.css';
 import QueriedPlants from './components/queriedPlants/QueriedPlants';
-import PlantCard from './components/plantCard/PlantCard';
+import PlantsLibrary from './components/plantsLibrary/PlantsLibrary';
 import SinglePlant from './components/singlePlant/SinglePlant'
 import { Route } from "react-router-dom";
 
@@ -19,6 +19,7 @@ function App() {
           <NavBar />
           <SearchBar />
           <QueriedPlants />
+          <PlantsLibrary />
         </>
       )} /> 
       
