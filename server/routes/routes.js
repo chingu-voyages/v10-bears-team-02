@@ -8,7 +8,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 // test connection to database
-function routes(err,db,app){
+function routes(err,doc,app){
     if(err){
         // err is databse conenction err, no user functionality, declare routes accordingly. (remove user authorized routes)
     } else {
@@ -39,6 +39,22 @@ function routes(err,db,app){
               res.send(formatPlant(body))
             })     
 
+          })
+
+          router.route('/api/library')
+          .post((req, res) => {
+            doc.create({email: 'test@123.com', username: 'test2'},function(err, userdata) {
+              console.log(userdata)
+              res.end()
+            })
+          })
+
+          router.route('/api/library/query')
+          .post((req,res) => {
+            doc.find({username: 'test2'}, function(err,q) {
+              console.log(q)
+              res.send(q)
+            })
           })
       
     }
