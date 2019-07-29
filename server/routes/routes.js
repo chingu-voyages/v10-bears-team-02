@@ -41,11 +41,11 @@ function routes(err,doc,app){
 
           })
 
-          router.route('/api/library')
+          router.route('/api/library/create')
           .post((req, res) => {
             doc.create({email: 'test@123.com', username: 'test2'},function(err, userdata) {
               console.log(userdata)
-              res.end()
+              res.send(userdata)
             })
           })
 
@@ -54,6 +54,20 @@ function routes(err,doc,app){
             doc.find({username: 'test2'}, function(err,q) {
               console.log(q)
               res.send(q)
+            })
+          })
+
+          router.route('/api/library/destroy')
+          .post((req,res) => {
+            doc.deleteOne({username: 'test2'}, function(err,userData){
+              res.send(userData)
+            })
+          })
+
+          router.route('/api/library')
+          .post((req,res) => {
+            doc.find(function(err,entries) {
+              res.send(entries)
             })
           })
       
