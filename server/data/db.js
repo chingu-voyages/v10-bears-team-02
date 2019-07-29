@@ -17,7 +17,7 @@ function connect(){
            
        }else{
            console.log('connecting db')
-           mongoose.connect(process.env.MONGO_ATLAS_URI, {useNewUrlParser: true}).then(()=>{
+           mongoose.connect(process.env.MONGO_ATLAS_URI, {useNewUrlParser: true, dbName: 'GardenGuru'}).then(()=>{
                //mongoose connect resolves to undefined set db manually
                 console.log('new db resolved')
                 let userSchema = new Schema({
@@ -30,7 +30,7 @@ function connect(){
                     },
                     authenticated: Boolean
                 })
-                let doc = mongoose.model('User', userSchema)                    
+                let doc = mongoose.model('User', userSchema, 'Users')                    
                resolve(doc)
                
            },(err)=>{
