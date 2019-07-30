@@ -33,7 +33,7 @@ function routes(err,doc,app){
       });
 
       //add local authentication routes
-      const localauth = require('./auth/local/localauth')(db, app)
+      const localauth = require('./auth/local/localauth')(doc, app)
       router.use(localauth)
 
         router.route('/api/query')
