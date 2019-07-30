@@ -44,9 +44,8 @@ function routes(doc, app) {
 
                 //should salt and hash password above
                 doc.create({                                                             
-                    userId: req.body.username, // unique username
-                    userName: req.body.username,
-                    password: hash                                          
+                    email: req.body.email, // unique username        
+                    password: req.body.password                                          
                 },(docerr, result)=>{
                     if(docerr)return res.send({errors:[{msg:docerr}]})
                     return res.send({message: "Sign up successfull! Try logging in with your new username and password"})
