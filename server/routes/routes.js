@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const request = require('request')
+const passport = require('passport')
 const formatPlant = require('./plantObjectMod').formatPlant
 //const passport = require('passport')
 if (process.env.NODE_ENV !== 'production') {
@@ -13,12 +14,28 @@ function routes(err,doc,app){
         // err is databse conenction err, no user functionality, declare routes accordingly. (remove user authorized routes)
     } else {
         // add passport stuff here
-        router.route('/api/test')
-        .get((req, res) => {        
-            console.log(req)
-            res.send({message: 'success'})
-        })
+      app.use(passport.initialize())
+      app.use(passport.session())
+
+
+
+      passport.serializeUser(function (user, done) {
+        console.log('third')
+        done(null, user.id);
+      });
       
+
+      passport.deserializeUser(function (id, done) {
+        console.log('fourth')
+        User.findById(id, function(err, user) {
+          done(err, user);
+        });
+      });
+
+      //add local authentication routes
+      const localauth = require('./auth/local/localauth')(db, app)
+      router.use(localauth)
+
         router.route('/api/query')
           .post((req, res) => {                     
             let url = process.env.TREFLE_API + '/plants?token=' + process.env.TREFLE_KEY + '&q=' + req.body.query           
@@ -94,6 +111,7 @@ function routes(err,doc,app){
               res.send(entries)
             })
           })
+
       
     }
     return router

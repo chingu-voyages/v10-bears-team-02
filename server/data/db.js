@@ -21,21 +21,23 @@ function connect(){
                //mongoose connect resolves to undefined set db manually
                 console.log('new db resolved')
                 let userSchema = new Schema({
-                    email: String,
-                    username: String,
+                    email: String, //unique name works as indentifier
+                    nickname: String, // personal name not unique
                     plantsLibrary: {
                         type: Array,
                         default: []
                     },
-                    authenticated: {
-                        type: Boolean,
-                        default: false
-                    },
-                    currentPlant: {
+                   currentPlant: {
                         type: Map,
                         of: String,
                         default: {}
                     }
+                    authenticated: {
+                        type: Boolean,
+                        default: false
+                    }, 
+                    password: String //  don't send this back to client
+
                 })
                 let doc = mongoose.model('User', userSchema, 'Users')                    
                resolve(doc)
