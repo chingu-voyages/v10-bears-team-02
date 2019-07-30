@@ -30,6 +30,12 @@ function routes(doc, app) {
         .post((req, res) => { //insert new user form data into db check if username exists, brcypt pw
             //check if user is in database
             console.log('first')
+            
+            /**
+             * Fix doc.findOne user.username.
+             * Query should search database for email not username and query correct properties
+             * 
+             */
             doc.findOne({ 'user.username': req.body.username }, (err, user) => {
                 //database error
                 console.log('second')
