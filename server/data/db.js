@@ -31,7 +31,7 @@ function connect(){
                         type: Map,
                         of: String,
                         default: {}
-                    }
+                    },
                     authenticated: {
                         type: Boolean,
                         default: false
