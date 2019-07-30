@@ -17,20 +17,27 @@ function connect(){
            
        }else{
            console.log('connecting db')
-           mongoose.connect(process.env.MONGO_ATLAS_URI, {useNewUrlParser: true}).then(()=>{
+           mongoose.connect(process.env.MONGO_ATLAS_URI, {useNewUrlParser: true, dbName: 'GardenGuru'}).then(()=>{
                //mongoose connect resolves to undefined set db manually
                 console.log('new db resolved')
                 let userSchema = new Schema({
                     email: String,
                     username: String,
-                    plantsLibrary: Array,
-                    currentPlant: {
-                        name: String,
-                        perennial: String
+                    plantsLibrary: {
+                        type: Array,
+                        default: []
                     },
-                    authenticated: Boolean
+                    authenticated: {
+                        type: Boolean,
+                        default: false
+                    },
+                    currentPlant: {
+                        type: Map,
+                        of: String,
+                        default: {}
+                    }
                 })
-                let doc = mongoose.model('User', userSchema)                    
+                let doc = mongoose.model('User', userSchema, 'Users')                    
                resolve(doc)
                
            },(err)=>{
