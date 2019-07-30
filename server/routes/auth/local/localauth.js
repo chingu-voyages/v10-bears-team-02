@@ -44,7 +44,8 @@ function routes(doc, app) {
 
                 //should salt and hash password above
                 doc.create({                                                             
-                    email: req.body.email, // unique username        
+                    email: req.body.email, // unique username   
+                    nickname: req.body.nickname,
                     password: req.body.password                                          
                 },(docerr, result)=>{
                     if(docerr)return res.send({errors:[{msg:docerr}]})
