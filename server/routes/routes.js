@@ -19,18 +19,21 @@ function routes(err,db,app){
 
 
 
-      passport.serializeUser(function(user, done) {
+      passport.serializeUser(function (user, done) {
+        console.log('third')
         done(null, user.id);
       });
       
-      passport.deserializeUser(function(id, done) {
+      passport.deserializeUser(function (id, done) {
+        console.log('fourth')
         User.findById(id, function(err, user) {
           done(err, user);
         });
       });
 
       //add local authentication routes
-      router.use(require('./auth/local/localauth'))
+      const localauth = require('./auth/local/localauth')(db, app)
+      router.use(localauth)
 
 
       

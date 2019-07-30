@@ -46,7 +46,7 @@ app.use(bodyParser.json())
 
 // handle routing
 var router //= require('./routes/routes')(null,null,app)
-//app.use(router)
+
 
 
 (async ()=>{

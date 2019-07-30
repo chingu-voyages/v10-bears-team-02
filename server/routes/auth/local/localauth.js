@@ -7,7 +7,8 @@ const LocalStrategy = require('passport-local').Strategy
 
 function routes(doc, app) { 
     passport.use(new LocalStrategy(
-        function(username, password, done) {
+        function (username, password, done) {
+            console.log('localstrat')
           doc.findOne({ username: username }, function (err, user) {
             if (err) { return done(err); }
             if (!user) {
@@ -28,8 +29,10 @@ function routes(doc, app) {
     router.route('/api/local_auth/signup')
         .post((req, res) => { //insert new user form data into db check if username exists, brcypt pw
             //check if user is in database
+            console.log('first')
             doc.findOne({ 'user.username': req.body.username }, (err, user) => {
                 //database error
+                console.log('second')
                 if (err) return res.send({ errors: [{ msg: err }] })                
                 //user already exists
                 if(user) return res.send({errors: [{msg:"User already exists try logging in"}]})      
