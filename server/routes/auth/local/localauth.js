@@ -70,4 +70,9 @@ function routes(doc, app) {
         }
     )  
 
+
+    return router
+
 }
+
+module.exports = routes

@@ -18,7 +18,7 @@ function routes(err,db,app){
       app.use(passport.session())
 
 
-      
+
       passport.serializeUser(function(user, done) {
         done(null, user.id);
       });
@@ -29,6 +29,8 @@ function routes(err,db,app){
         });
       });
 
+      //add local authentication routes
+      router.use(require('./auth/local/localauth'))
 
 
       
