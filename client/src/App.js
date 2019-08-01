@@ -1,10 +1,11 @@
 import React from 'react';
-import NavBar from './components/navbar/NavBar'
-import SearchBar from './components/searchBar/SearchBar'
+import NavBar from './components/navbar/NavBar';
+import SearchBar from './components/searchBar/SearchBar';
 import './App.css';
 import QueriedPlants from './components/queriedPlants/QueriedPlants';
-import SinglePlant from './components/singlePlant/SinglePlant'
+import SinglePlant from './components/singlePlant/SinglePlant';
 import PlantsLibrary from './components/plantsLibrary/PlantsLibrary';
+import Login from './components/loginForm/Login';
 import { Route } from "react-router-dom";
 
 
@@ -23,7 +24,8 @@ function App() {
         </>
       )} /> 
       
-      <Route path="/plant/:id" render={props => <SinglePlant {...props}/>} />
+      <Route path="/plant/:id" render={props => <SinglePlant {...props} />} />
+      <Route path="/login" render={props => <Login {...props}/>} />
     </div>
   );
 }
