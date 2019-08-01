@@ -7,7 +7,7 @@ import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import useStyles from './LoginStyles';
+import useStyles from './SignUpStyles';
 import Container from '@material-ui/core/Container';
 
 export default function SignIn() {
