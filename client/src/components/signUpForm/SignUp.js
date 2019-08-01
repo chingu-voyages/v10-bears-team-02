@@ -8,19 +8,19 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import useStyles from './SignUpStyles';
+import { connect } from 'react-redux';
+import { submitSignUp } from '../../actions/signUp';
 import Container from '@material-ui/core/Container';
 
-export default function SignIn() {
+function SignUp(props) {
     const classes = useStyles();
     const [email, setEmail] = useState()
     const [nickName, setNickName] = useState()
     const [password, setPassword] = useState()
 
     function handleSumbit(e) { 
-        e.preventDefault()
-        console.log(email, nickName, password)
-
-        
+        e.preventDefault()        
+        props.submitSignUp({email, nickName, password})        
     }
     
   return (
@@ -33,7 +33,7 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Sign Up
         </Typography>
-        <form className={classes.form}   onSubmit={handleSumbit}>
+        <form className={classes.form} onSubmit={handleSumbit}>
             <TextField
                 variant="outlined"
                 margin="normal"
@@ -80,7 +80,7 @@ export default function SignIn() {
             <Grid container>            
                 <Grid item>
                 <Link href="/login" variant="body2">
-                    {"Already have an account> Sign In"}
+                    {"Already have an account? Sign In"}
                 </Link>
                 </Grid>
             </Grid>
@@ -90,3 +90,5 @@ export default function SignIn() {
     </Container>
   );
 }
+
+export default connect(null, {submitSignUp})(SignUp)

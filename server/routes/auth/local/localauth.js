@@ -28,14 +28,14 @@ function routes(doc, app) {
      */        
     router.route('/api/local_auth/signup')
         .post((req, res) => { //insert new user form data into db check if username exists, brcypt pw
-            //check if user is in database
-            console.log('first')
+            //check if user is in database            
             
             /**
              * Fix doc.findOne user.username.
              * Query should search database for email not username and query correct properties
              * 
              */
+            console.log(req.body.userCreds.email, req.body.userCreds.nickName, req.body.userCreds.password)
             doc.findOne({ 'user.username': req.body.username }, (err, user) => {
                 //database error
                 console.log('second')
