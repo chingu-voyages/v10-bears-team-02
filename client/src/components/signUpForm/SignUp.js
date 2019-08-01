@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -11,8 +11,18 @@ import useStyles from './SignUpStyles';
 import Container from '@material-ui/core/Container';
 
 export default function SignIn() {
-  const classes = useStyles();
+    const classes = useStyles();
+    const [email, setEmail] = useState()
+    const [nickName, setNickName] = useState()
+    const [password, setPassword] = useState()
 
+    function handleSumbit(e) { 
+        e.preventDefault()
+        console.log(email, nickName, password)
+
+        
+    }
+    
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -23,15 +33,16 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Sign Up
         </Typography>
-        <form className={classes.form} >
+        <form className={classes.form}   onSubmit={handleSumbit}>
             <TextField
                 variant="outlined"
                 margin="normal"
-                required
+                required={true}
                 fullWidth
                 id="email"
                 label="Email Address"
                 name="email"
+                onChange={(e) => setEmail(e.target.value)}
                 autoComplete="email"
                 autoFocus
             />
@@ -40,9 +51,10 @@ export default function SignIn() {
                 margin="normal"
                 required
                 fullWidth
-                id="email"
+                id="nicname"
                 label="Nick Name"
-                name="nickname"                
+                name="nickname"  
+                onChange={(e) => setNickName(e.target.value)}      
             />                  
             <TextField
                 variant="outlined"
@@ -53,13 +65,14 @@ export default function SignIn() {
                 label="Password"
                 type="password"
                 id="password"
+                onChange={(e) => setPassword(e.target.value)}
                 autoComplete="current-password"
             />       
             <Button
                 type="submit"
                 fullWidth
                 variant="contained"
-                color="primary"
+                color="primary"              
                 className={classes.submit}
             >
                 Sign In
