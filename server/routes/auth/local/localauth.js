@@ -33,12 +33,14 @@ function routes(doc, app) {
             /**
              * Fix doc.findOne user.username.
              * Query should search database for email not username and query correct properties
-             * 
+             *               
              */
-            console.log(req.body.userCreds.email, req.body.userCreds.nickName, req.body.userCreds.password)
-            doc.findOne({ 'user.username': req.body.username }, (err, user) => {
+
+            let userCreds = req.body.userCreds
+          
+            doc.findOne({ 'email': userCreds.email }, (err, user) => {
                 //database error
-                console.log('second')
+               
                 if (err) return res.send({ errors: [{ msg: err }] })                
                 //user already exists
                 if(user) return res.send({errors: [{msg:"User already exists try logging in"}]})      
@@ -52,13 +54,14 @@ function routes(doc, app) {
                 
 
                 //should salt and hash password above
+                console.log(userCreds)
                 doc.create({                                                             
-                    email: req.body.email, // unique username   
-                    nickname: req.body.nickname,
-                    password: req.body.password                                          
+                    email: userCreds.email, // unique username   
+                    nickname: userCreds.nickname,
+                    password: userCreds.password                                          
                 },(docerr, result)=>{
                     if(docerr)return res.send({errors:[{msg:docerr}]})
-                    return res.send({message: "Sign up successfull! Try logging in with your new username and password"})
+                    return res.send({message: "Sign up successfull! Try logging in with your new username and password", result})
                     
                 }) 
 

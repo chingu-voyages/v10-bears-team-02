@@ -15,12 +15,12 @@ import Container from '@material-ui/core/Container';
 function SignUp(props) {
     const classes = useStyles();
     const [email, setEmail] = useState()
-    const [nickName, setNickName] = useState()
+    const [nickname, setNickname] = useState()
     const [password, setPassword] = useState()
 
     function handleSumbit(e) { 
         e.preventDefault()        
-        props.submitSignUp({email, nickName, password})        
+        props.submitSignUp({email, nickname, password})        
     }
     
   return (
@@ -51,10 +51,10 @@ function SignUp(props) {
                 margin="normal"
                 required
                 fullWidth
-                id="nicname"
-                label="Nick Name"
+                id="nickname"
+                label="Nickname"
                 name="nickname"  
-                onChange={(e) => setNickName(e.target.value)}      
+                onChange={(e) => setNickname(e.target.value)}      
             />                  
             <TextField
                 variant="outlined"
