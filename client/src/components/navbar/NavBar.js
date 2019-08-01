@@ -7,8 +7,6 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
-import axios from 'axios';
-
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -21,12 +19,6 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const handleLogin = () => {
-    axios.get('/api/test')
-    .then((resp) => {
-        console.log(resp)
-    })
-}
 
 export default function NavBar() {
   const classes = useStyles();
@@ -40,10 +32,10 @@ export default function NavBar() {
           </IconButton>
           <Typography variant="h6" className={classes.title}>
             Garden Guru
-          </Typography>
-          <Button 
+          </Typography>     
+          <Button
             color="inherit"
-            onClick={handleLogin}
+            href="/login"
           >Login</Button>
         </Toolbar>
       </AppBar>
