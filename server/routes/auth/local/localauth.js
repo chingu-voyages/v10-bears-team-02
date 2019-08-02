@@ -23,6 +23,14 @@ function routes(doc, app) {
         }
     ));
 
+    router.route('/api/local_auth/check')
+        .get((req, res) => { 
+            if (req.user) {
+                return res.send({ check: true })                
+            }
+            return res.send({ check: false })
+        })
+
       /**     
      *  sign up route
      */        
