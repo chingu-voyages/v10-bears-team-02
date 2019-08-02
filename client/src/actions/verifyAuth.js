@@ -13,9 +13,9 @@ const verifyCookie = () => {
 export const verifyAuth = () => {    
     return (dispatch) => {        
        //dispatch(verifyCookie()) 
-        return axios.post('/api/local_auth/check' )        
+        return axios.get('/api/local_auth/check' )        
             .then(response => {                    
-                console.log("verify", response)                
+                console.log("check auth", response.data)                
             }
         )
     }

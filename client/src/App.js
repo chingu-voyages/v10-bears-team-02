@@ -8,16 +8,17 @@ import PlantsLibrary from './components/plantsLibrary/PlantsLibrary';
 import Login from './components/loginForm/Login';
 import SignUp from './components/signUpForm/SignUp'
 import { connect } from 'react-redux';
+import { verifyAuth } from './actions/verifyAuth'
 import { Route } from "react-router-dom";
 
 
 
 
-function App() {
+function App(props) {
   
-  const checkAuth = (props) => {    
+  const checkAuth = () => {    
     console.log('check for cookie and deserialize user')
-
+    props.verifyAuth()
   }
 
   useEffect(checkAuth)
@@ -40,4 +41,4 @@ function App() {
   );
 }
 //add actionhere
-export default connect(null, {})(App);
+export default connect(null, {verifyAuth})(App);
