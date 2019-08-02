@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect }from 'react';
 import NavBar from './components/navbar/NavBar';
 import SearchBar from './components/searchBar/SearchBar';
 import './App.css';
@@ -7,12 +7,21 @@ import SinglePlant from './components/singlePlant/SinglePlant';
 import PlantsLibrary from './components/plantsLibrary/PlantsLibrary';
 import Login from './components/loginForm/Login';
 import SignUp from './components/signUpForm/SignUp'
+import { connect } from 'react-redux';
+import { verifyAuth } from './actions/verifyAuth'
 import { Route } from "react-router-dom";
 
 
 
 
-function App() {
+function App(props) {
+  
+  const checkAuth = () => {    
+    console.log('check for cookie and deserialize user')
+    props.verifyAuth()
+  }
+
+  useEffect(checkAuth)
   return (
     <div className="App"> 
     
@@ -31,5 +40,5 @@ function App() {
     </div>
   );
 }
-
-export default App;
+//add actionhere
+export default connect(null, {verifyAuth})(App);

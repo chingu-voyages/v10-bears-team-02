@@ -8,17 +8,18 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import useStyles from './LoginStyles';
+import { connect } from 'react-redux';
+import { submitLogin } from '../../actions/login';
 import Container from '@material-ui/core/Container';
 
-export default function SignIn(props) {
+function Login(props) {
     const classes = useStyles();    
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
 
     function handleSumbit(e) { 
         e.preventDefault()      
-        console.log(email, password)
-        //props.submitLogin({email, password})        
+        props.submitLogin({email, password})        
     }
 
     return (
@@ -29,7 +30,7 @@ export default function SignIn(props) {
                 <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-                Sign in
+                Login
             </Typography>
             <form className={classes.form} onSubmit={handleSumbit}>
                 <TextField
@@ -63,12 +64,12 @@ export default function SignIn(props) {
                     color="primary"
                     className={classes.submit}
                 >
-                Sign In
+                Login
                 </Button>
                 <Grid container>            
                 <Grid item>
                     <Link href="/signup" variant="body2">
-                    {"Don't have an account? Login"}
+                    {"Don't have an account? Sign Up"}
                     </Link>
                 </Grid>
                 </Grid>
@@ -78,3 +79,5 @@ export default function SignIn(props) {
         </Container>
     );
 }
+
+export default connect(null, {submitLogin})(Login)

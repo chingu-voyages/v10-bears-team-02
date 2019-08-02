@@ -75,7 +75,7 @@ function SignUp(props) {
                 color="primary"              
                 className={classes.submit}
             >
-                Sign In
+                Sign Up
             </Button>
             <Grid container>            
                 <Grid item>

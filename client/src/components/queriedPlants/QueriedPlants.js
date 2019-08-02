@@ -7,8 +7,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 
 
-function RenderPlants(props) {
-    console.log(props)
+function RenderPlants(props) {  
     return props.plants ? (
         props.plants.map((plant, index) => {
             return (
@@ -27,8 +26,7 @@ function ListItemLink(props) {
   return <ListItem button component="a" {...props} />;
 }
 
-function QueriedPlants(props) {
-    console.log(props)
+function QueriedPlants(props) {  
     const classes = useStyles()
 
     return (
