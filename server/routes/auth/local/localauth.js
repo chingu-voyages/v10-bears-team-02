@@ -6,20 +6,20 @@ const LocalStrategy = require('passport-local').Strategy
 
 
 function routes(doc, app) { 
-    passport.use(new LocalStrategy(
-        function (username, password, done) {
-            console.log('localstrat')
-          doc.findOne({ username: username }, function (err, user) {
-            if (err) { return done(err); }
-            if (!user) {
-              return done(null, false, { message: 'Incorrect username.' });
-            }
-            //use bcrypt here  
-            if (!user.validPassword(password)) {
-              return done(null, false, { message: 'Incorrect password.' });
-            }
-            return done(null, user);
-          });
+    passport.use(new LocalStrategy({usernameField: 'email', passwordField: 'password'},      
+        function (username, password, done) {  
+            doc.findOne({ email: username }, function (err, user) {                 
+                if (!user) {                    
+                    return done(null, false, {message: "No user found"});
+                }
+                //use bcrypt here  
+                if (user.password !== password) {                               
+                    return done(null, false, {message: "Bad password"});
+                }
+                if (err) { return done(err); }   
+                
+                return done(null, user);
+            });
         }
     ));
 
@@ -28,16 +28,8 @@ function routes(doc, app) {
      */        
     router.route('/api/local_auth/signup')
         .post((req, res) => { //insert new user form data into db check if username exists, brcypt pw
-            //check if user is in database            
-            
-            /**
-             * Fix doc.findOne user.username.
-             * Query should search database for email not username and query correct properties
-             *               
-             */
-
-            let userCreds = req.body.userCreds
-          
+            //check if user is in database                        
+            let userCreds = req.body.userCreds          
             doc.findOne({ 'email': userCreds.email }, (err, user) => {
                 //database error
                
@@ -70,15 +62,24 @@ function routes(doc, app) {
 
     )
     
-    //authenticate user credentials route
+    //authenticate user credentials route  passport.authenticate('local'), 
     router.route('/api/local_auth/login')
-        .post(passport.authenticate('local'), function(req, res){
-            console.log('passed local strategy')
-            if(req.user){
-                console.log('user is:', req.user)
-                return res.send(true)
-            }
-            return res.send(false)
+        .post(function (req, res) {
+            console.log({"cookie": req.cookies})
+            passport.authenticate('local', function(err, user, info) {
+                if (err) { return res.send(err); }
+                
+                if (!user) {
+                    req.logOut()
+                    return res.send(info);
+                }
+
+                req.logIn(user, function(err) {
+                    if (err) { return res.send(err); }
+                    console.log({ "Req.user": req.user })
+                    return res.send({message:'Logged in'});
+                });
+            })(req, res);
         }
     )  
 

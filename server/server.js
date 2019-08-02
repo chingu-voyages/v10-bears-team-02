@@ -1,7 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const dbDoc = require('./data/db')
-const cookieParser = require('cookie-parser')    
+const dbDoc = require('./data/db') 
 const session = require('express-session')
 
 // load env variables
@@ -21,9 +20,10 @@ const sess_options = {
     secret: process.env.SESSION_SECRET, 
     resave: false,
     saveUninitialized: true,
+    name:"session", 
     cookie: {
         httpOnly: true, 
-        secure: false,  //  setup https to set to true
+        secure: false,  //  setup https to set to true during production
         maxAge: 1000 * 60 * 60 * 3,
         name: 'user'
     }
@@ -31,11 +31,6 @@ const sess_options = {
 //express-session production values here
 
 
-
-
-
-
-app.use(cookieParser())
 
 app.use(session(sess_options))
 // use body parser
