@@ -31,8 +31,8 @@ function App(props) {
           <NavBar />
           <SearchBar />
           <HomePage />
-          <QueriedPlants />
-          <PlantsLibrary />
+          {/* <QueriedPlants /> */}
+          {/* <PlantsLibrary /> */}
         </>
       )} /> 
       

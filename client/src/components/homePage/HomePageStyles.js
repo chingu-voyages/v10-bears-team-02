@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const backgroundImage =
-  'https://images.unsplash.com/photo-1534854638093-bada1813ca19?auto=format&fit=crop&w=1400&q=80';
+'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=966&q=80';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -41,16 +41,17 @@ const useStyles = makeStyles(theme => ({
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         zIndex: -2,
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundColor: '#7fc7d9', // Average color of the background image.
+        backgroundPosition: 'center',
     },
     arrowDown: {
         position: 'absolute',
         bottom: theme.spacing(4),
     },  
-    background: {
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundColor: '#7fc7d9', // Average color of the background image.
-        backgroundPosition: 'center',
-    },
+    // background: {
+
+    // },
     button: {
       minWidth: 200,
     },
