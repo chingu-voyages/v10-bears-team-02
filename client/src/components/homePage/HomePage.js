@@ -40,10 +40,10 @@ function HomePage() {
       {/* Increase the network loading priority of the background image. */}
       <img style={{ display: 'none' }} src={backgroundImage} alt="" />
       <Typography color="inherit" align="center" variant="h2" marked="center">
-        Upgrade your Sundays
+        Welcome to Garden Guru
       </Typography>
       <Typography color="inherit" align="center" variant="h5" className={classes.h5}>
-        Enjoy secret offers up to -70% off the best luxury hotels every Sunday.
+        Search for detailed information about growing plants and build a digital garden
       </Typography>
       <Button
         color="secondary"
@@ -53,10 +53,10 @@ function HomePage() {
         component="a"
         href="/premium-themes/onepirate/sign-up/"
       >
-        Register
+        Sign Up
       </Button>
       <Typography variant="body2" color="inherit" className={classes.more}>
-        Discover the experience
+        BECOME THE GURU OF YOUR GARDEN
       </Typography>
     </Layout>
     </div>
