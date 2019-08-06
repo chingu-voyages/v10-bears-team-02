@@ -40,10 +40,10 @@ function HomePage() {
       {/* Increase the network loading priority of the background image. */}
       <img style={{ display: 'none' }} src={backgroundImage} alt="" />
       <Typography color="inherit" align="center" variant="h2" marked="center">
-        Welcome to Garden Guru
+        Welcome to Your Plant Growing Guide
       </Typography>
       <Typography color="inherit" align="center" variant="h5" className={classes.h5}>
-        Search for detailed information about growing plants and build a digital garden
+        Search for detailed information about plants and build a digital garden
       </Typography>
       <Button
         color="secondary"
