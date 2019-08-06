@@ -5,6 +5,7 @@ import './App.css';
 import QueriedPlants from './components/queriedPlants/QueriedPlants';
 import SinglePlant from './components/singlePlant/SinglePlant';
 import PlantsLibrary from './components/plantsLibrary/PlantsLibrary';
+import HomePage from './components/homePage/HomePage';
 import Login from './components/loginForm/Login';
 import SignUp from './components/signUpForm/SignUp'
 import { connect } from 'react-redux';
@@ -29,6 +30,7 @@ function App(props) {
         <>
           <NavBar />
           <SearchBar />
+          <HomePage />
           <QueriedPlants />
           <PlantsLibrary />
         </>
