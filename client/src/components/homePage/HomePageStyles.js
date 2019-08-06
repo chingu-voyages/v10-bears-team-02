@@ -49,9 +49,6 @@ const useStyles = makeStyles(theme => ({
         position: 'absolute',
         bottom: theme.spacing(4),
     },  
-    // background: {
-
-    // },
     button: {
       minWidth: 200,
     },
