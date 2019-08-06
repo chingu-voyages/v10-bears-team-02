@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const dbDoc = require('./data/db') 
 const session = require('express-session')
+const MongoStore = require('connect-mongo')(session);
 
 // load env variables
 if (process.env.NODE_ENV !== 'production') {
@@ -18,6 +19,7 @@ const app = express()
 
 const sess_options = {    
     secret: process.env.SESSION_SECRET, 
+    store: new MongoStore({url: process.env.MONGO_SESS_STORE}),
     resave: false,
     saveUninitialized: true,
     name:"session", 
