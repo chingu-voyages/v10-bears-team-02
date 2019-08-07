@@ -81,8 +81,7 @@ var router //= require('./routes/routes')(null,null,app)
     });   
     //start server
     app.listen(port, () => {         
-        console.log(`server started on port ${port}`)
-        //api server started
+        console.log(`server started on port ${port}`)      
     })
 
 })()
