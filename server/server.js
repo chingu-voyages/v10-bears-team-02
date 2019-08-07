@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const dbDoc = require('./data/db') 
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session);
+const path = require('path');
 
 // load env variables
 if (process.env.NODE_ENV !== 'production') {
@@ -61,14 +62,14 @@ var router //= require('./routes/routes')(null,null,app)
     }    
     //add routes      
     app.use(router)
-
-    // // Handle React routing, return all requests to React app
-    // app.get('/*', function(req, res) {   
-    //     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-    // });
     
+    // // Handle React routing, return all requests to React app
+    app.get('/*', function (req, res) {           
+        res.sendFile(path.join(__dirname, '/../client/build', 'index.html'));        
+    });   
     //start server
-    app.listen(port, ()=>{
+    app.listen(port, () => { 
+        
         console.log(`server started on port ${port}`)
         //api server started
     })
