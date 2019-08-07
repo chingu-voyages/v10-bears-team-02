@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 const bodyParser = require('body-parser')
 const dbDoc = require('./data/db') 
 const session = require('express-session')
@@ -39,6 +40,17 @@ if(app.get('env') == 'production'){
 }
 
 app.use(session(sess_options))
+ 
+//set cors
+let corsOption = {
+    origin: "*",
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true
+};
+//use cors
+app.use(cors(corsOption))
+
+
 // use body parser
 app.use(bodyParser.urlencoded({
     extended: true
