@@ -57,6 +57,13 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(bodyParser.json())
 
+if (process.env.NODE_ENV === 'production') {
+    // Serve any static files
+    app.use(express.static(path.join(__dirname, 'client/build')))    
+        
+}
+
+
 // handle routing
 var router //= require('./routes/routes')(null,null,app)
 
