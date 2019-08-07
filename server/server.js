@@ -80,8 +80,7 @@ var router //= require('./routes/routes')(null,null,app)
         res.sendFile(path.join(__dirname, '/../client/build', 'index.html'));        
     });   
     //start server
-    app.listen(port, () => { 
-        
+    app.listen(port, () => {         
         console.log(`server started on port ${port}`)
         //api server started
     })
