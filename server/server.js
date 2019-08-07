@@ -30,9 +30,12 @@ const sess_options = {
         name: 'user'
     }
 }
-//express-session production values here
 
-
+//express-session  prodcution values
+if(app.get('env') == 'production'){
+    app.set('trust proxy', 1)
+    sess_options.cookie.secure = true
+}
 
 app.use(session(sess_options))
 // use body parser
