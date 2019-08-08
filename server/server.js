@@ -1,8 +1,10 @@
 const express = require('express')
+const cors = require('cors')
 const bodyParser = require('body-parser')
 const dbDoc = require('./data/db') 
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session);
+const path = require('path');
 
 // load env variables
 if (process.env.NODE_ENV !== 'production') {
@@ -30,16 +32,37 @@ const sess_options = {
         name: 'user'
     }
 }
-//express-session production values here
 
-
+//express-session  prodcution values
+if(app.get('env') == 'production'){
+    app.set('trust proxy', 1)
+    sess_options.cookie.secure = true
+}
 
 app.use(session(sess_options))
+ 
+//set cors
+let corsOption = {
+    origin: "*",
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true
+};
+//use cors
+app.use(cors(corsOption))
+
+
 // use body parser
 app.use(bodyParser.urlencoded({
     extended: true
 }))
 app.use(bodyParser.json())
+
+if (process.env.NODE_ENV === 'production') {
+    // Serve any static files
+    app.use(express.static(path.join(__dirname, '/../client/build')))    
+        
+}
+
 
 // handle routing
 var router //= require('./routes/routes')(null,null,app)
@@ -58,16 +81,14 @@ var router //= require('./routes/routes')(null,null,app)
     }    
     //add routes      
     app.use(router)
-
-    // // Handle React routing, return all requests to React app
-    // app.get('/*', function(req, res) {   
-    //     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-    // });
     
+    // // Handle React routing, return all requests to React app
+    app.get('/*', function (req, res) {           
+        res.sendFile(path.join(__dirname, '/../client/build', 'index.html'));        
+    });   
     //start server
-    app.listen(port, ()=>{
-        console.log(`server started on port ${port}`)
-        //api server started
+    app.listen(port, () => {         
+        console.log(`server started on port ${port}`)      
     })
 
 })()
