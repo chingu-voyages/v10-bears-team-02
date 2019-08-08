@@ -3,6 +3,7 @@ const router = express.Router()
 const request = require('request')
 const passport = require('passport')
 const formatPlant = require('./plantObjectMod').formatPlant
+const filterSortQuery = require('./helper/queryHelpers')
 //const passport = require('passport')
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').load()
@@ -43,8 +44,9 @@ function routes(err,doc,app){
           .post((req, res) => {                     
             let url = process.env.TREFLE_API + '/plants?token=' + process.env.TREFLE_KEY + '&q=' + req.body.query           
             request(url, { json: true }, (err, response, body) => {
-              if (err) return res.send({ error: err.toString })          
-              res.send(body)
+              if (err) return res.send({ error: err.toString })   
+              let final = filterSortQuery(body)
+              res.send(final)
             })             
           })
           
