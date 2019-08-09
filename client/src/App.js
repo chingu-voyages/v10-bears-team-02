@@ -25,14 +25,12 @@ function App(props) {
   useEffect(checkAuth)
   return (
     <div className="App"> 
-    
+      <Route path="*" render={props => <NavBar {...props} />} />
       <Route exact path="/" render={props => (
         <>
-          <NavBar {...props} />
           <SearchBar />
-          <HomePage {...props} />
+          <HomePage />
           <QueriedPlants />
-          {/* <PlantsLibrary /> */}
         </>
       )} /> 
       
