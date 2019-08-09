@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { connect } from 'react-redux';
 import SearchBar from '../searchBar/SearchBar';
+import  {submitLogOut} from '../../actions/logout'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,14 +22,18 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function handleLogOut(e) { 
-  console.log(e)
-    //e.preventDefault()
-}
 
 function NavBar(props) {
   const classes = useStyles();
   console.log(props)
+
+  
+  function handleLogOut(e) { 
+    console.log(e)
+      //e.preventDefault()
+      props.submitLogOut()
+    
+  }
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -58,4 +63,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(NavBar)
+export default connect(mapStateToProps, {submitLogOut})(NavBar)

@@ -16,6 +16,11 @@ export default (state = initialState, action) => {
                 ...state, 
                 authenticated: action.payload
             }
+        
+        case 'LOG_OUT' :
+            return {
+                initialState, // be sure default state has authenticated = false                 
+            }
 
         default:
             return state

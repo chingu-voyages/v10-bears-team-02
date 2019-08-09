@@ -30,6 +30,16 @@ function routes(doc, app) {
             }
             return res.send({ auth: false })
         })
+    
+    router.route('/api/local_auth/logout')
+        .post((req, res) => { 
+            if (req.user) {
+                req.logOut()
+                console.log(req.cookie)
+            }
+            return res.send({auth: false})
+
+        })
 
       /**     
      *  sign up route
