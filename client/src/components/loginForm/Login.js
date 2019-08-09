@@ -19,7 +19,7 @@ function Login(props) {
 
     function handleSumbit(e) { 
         e.preventDefault()      
-        props.submitLogin({email, password})        
+        props.submitLogin({ email, password }, props.history)                    
     }
 
     return (
