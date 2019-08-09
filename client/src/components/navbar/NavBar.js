@@ -48,7 +48,7 @@ function NavBar(props) {
           <Typography variant="h6" className={classes.title}>
             Garden Guru 
           </Typography>  
-          <SearchBar />
+          <SearchBar {...props} />
           {props.auth && <Button color="inherit" onClick={handleLogOut}>Log Out</Button>}
 
           <Button
