@@ -8,14 +8,23 @@ const verifyCookie = () => {
     }
 }
 
+const cookieStatus = (payload) => { 
+    return {
+        type: 'COOKIE_STATUS', 
+        payload
+    }
+}
+
+
 
 //Action
 export const verifyAuth = () => {    
     return (dispatch) => {        
-       //dispatch(verifyCookie()) 
+       dispatch(verifyCookie()) 
         return axios.get('/api/local_auth/check' )        
             .then(response => {                    
-                console.log("check auth", response.data)                
+                console.log("check auth", response.data)  
+                dispatch(cookieStatus(response.data.auth)) //  userData.js Reducer
             }
         )
     }

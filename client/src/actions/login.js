@@ -26,7 +26,9 @@ export const submitLogin = (userCreds) => {
        dispatch(submitLoginCredentials()) 
         return axios.post('/api/local_auth/login', userCreds )        
             .then(response => {                    
-                console.log("testst", response)                
+                // set state so client can redirect to homepage which will run verifyAuth.
+                console.log("testst", response)    
+               
             }
         )
     }
