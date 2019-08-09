@@ -51,7 +51,7 @@ function HomePage() {
         size="large"
         className={classes.button}
         component="a"
-        href="/premium-themes/onepirate/sign-up/"
+        href="/signup"
       >
         Sign Up
       </Button>

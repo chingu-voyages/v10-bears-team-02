@@ -30,15 +30,16 @@ function App(props) {
         <>
           <NavBar />
           <SearchBar />
-          {/* <HomePage /> */}
+          <HomePage />
           <QueriedPlants />
-          <PlantsLibrary />
+          {/* <PlantsLibrary /> */}
         </>
       )} /> 
       
       <Route path="/plant/:id" render={props => <SinglePlant {...props} />} />
       <Route path="/login" render={props => <Login {...props} />} />
       <Route path="/signup" render={props =><SignUp {...props } /> } />
+      <Route path="/mygarden" render={props => <PlantsLibrary {...props} />} />
     </div>
   );
 }
