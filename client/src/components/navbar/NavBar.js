@@ -27,6 +27,10 @@ function NavBar(props) {
   const classes = useStyles();
   console.log(props)
 
+  function handleLogin() {
+    props.history.push("/login")
+  }
+
   
   function handleLogOut(e) { 
     console.log(e)
@@ -49,7 +53,7 @@ function NavBar(props) {
 
           <Button
             color="inherit"
-            href="/login"
+            onClick={handleLogin}
           >Login</Button>
         </Toolbar>
       </AppBar>
