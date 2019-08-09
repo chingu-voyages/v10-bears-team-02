@@ -50,7 +50,6 @@ let corsOption = {
 //use cors
 app.use(cors(corsOption))
 
-
 // use body parser
 app.use(bodyParser.urlencoded({
     extended: true

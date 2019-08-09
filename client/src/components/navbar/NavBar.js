@@ -38,6 +38,11 @@ function NavBar(props) {
       props.submitLogOut()
     
   }
+
+  function handleLogin() { 
+
+    console.log(props.history.push('/login'))
+  }
   return (
     <div className={classes.root}>
       <AppBar position="static">
