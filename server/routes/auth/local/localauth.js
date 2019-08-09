@@ -26,9 +26,9 @@ function routes(doc, app) {
     router.route('/api/local_auth/check')
         .get((req, res) => { 
             if (req.user) {
-                return res.send({ check: true })                
+                return res.send({ auth: true })                
             }
-            return res.send({ check: false })
+            return res.send({ auth: false })
         })
 
       /**     
@@ -41,7 +41,7 @@ function routes(doc, app) {
             doc.findOne({ 'email': userCreds.email }, (err, user) => {
                 //database error
                
-                if (err) return res.send({ errors: [{ msg: err }] })                
+                if (err) return res.send({ errors: [{ msg: err }]})                
                 //user already exists
                 if(user) return res.send({errors: [{msg:"User already exists try logging in"}]})      
                 
@@ -75,17 +75,17 @@ function routes(doc, app) {
         .post(function (req, res) {
             console.log({"cookie": req.cookies})
             passport.authenticate('local', function(err, user, info) {
-                if (err) { return res.send(err); }
+                if (err) { return res.send({ err, auth:false }); }
                 
-                if (!user) {
+                if (!user) {                  
                     req.logOut()
-                    return res.send(info);
+                    return res.send({info, auth :false});
                 }
 
                 req.logIn(user, function(err) {
                     if (err) { return res.send(err); }
                     console.log({ "Req.user": req.user })
-                    return res.send({message:'Logged in'});
+                    res.send({ message: 'Logged in' , auth: true});                    
                 });
             })(req, res);
         }
