@@ -30,7 +30,7 @@ function App(props) {
         <>
           <NavBar {...props} />
           <SearchBar />
-          <HomePage />
+          <HomePage {...props} />
           <QueriedPlants />
           {/* <PlantsLibrary /> */}
         </>

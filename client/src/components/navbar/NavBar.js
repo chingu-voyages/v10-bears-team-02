@@ -27,7 +27,7 @@ function NavBar(props) {
   const classes = useStyles();
   console.log(props)
 
-  function handleLogin(e) {
+  function handleLogin() {
     props.history.push("/login")
   }
 

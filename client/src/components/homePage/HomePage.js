@@ -31,8 +31,12 @@ Layout.propTypes = {
 };
 
 
-function HomePage() {
+function HomePage(props) {
   const classes = useStyles();
+
+  function handleSignUp() {
+    props.history.push("/signup")
+  }
 
   return (
       <div>
@@ -51,7 +55,7 @@ function HomePage() {
         size="large"
         className={classes.button}
         component="a"
-        href="/signup"
+        onClick={handleSignUp}
       >
         Sign Up
       </Button>
