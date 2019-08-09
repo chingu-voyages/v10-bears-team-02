@@ -28,7 +28,7 @@ function App(props) {
     
       <Route exact path="/" render={props => (
         <>
-          <NavBar />
+          <NavBar {...props} />
           <SearchBar />
           <HomePage />
           <QueriedPlants />
