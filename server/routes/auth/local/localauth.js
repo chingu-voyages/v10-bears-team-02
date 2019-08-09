@@ -30,6 +30,16 @@ function routes(doc, app) {
             }
             return res.send({ auth: false })
         })
+    
+    router.route('/api/local_auth/logout')
+        .post((req, res) => { 
+            if (req.user) {
+                req.logOut()
+                console.log(req.cookie)
+            }
+            return res.send({auth: false})
+
+        })
 
       /**     
      *  sign up route
@@ -85,7 +95,9 @@ function routes(doc, app) {
                 req.logIn(user, function(err) {
                     if (err) { return res.send(err); }
                     console.log({ "Req.user": req.user })
-                    res.send({ message: 'Logged in' , auth: true});                    
+                   // res.redirect('/')
+                    res.send({ message: 'Logged in', auth: true });        
+                   
                 });
             })(req, res);
         }

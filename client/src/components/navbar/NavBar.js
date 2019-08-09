@@ -6,7 +6,9 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import { connect } from 'react-redux';
 import SearchBar from '../searchBar/SearchBar';
+import  {submitLogOut} from '../../actions/logout'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -21,9 +23,17 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-export default function NavBar() {
+function NavBar(props) {
   const classes = useStyles();
+  console.log(props)
 
+  
+  function handleLogOut(e) { 
+    console.log(e)
+      //e.preventDefault()
+      props.submitLogOut()
+    
+  }
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -32,8 +42,11 @@ export default function NavBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Garden Guru
+            Garden Guru 
           </Typography>  
+
+          {props.auth && <Button color="inherit" onClick={handleLogOut}>Log Out</Button>}
+
           <Button
             color="inherit"
             href="/login"
@@ -43,3 +56,11 @@ export default function NavBar() {
     </div>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    auth: state.userData.authenticated
+  }
+}
+
+export default connect(mapStateToProps, {submitLogOut})(NavBar)
