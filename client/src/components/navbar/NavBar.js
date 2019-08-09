@@ -34,6 +34,11 @@ function NavBar(props) {
       props.submitLogOut()
     
   }
+
+  function handleLogin() { 
+
+    console.log(props.history.push('/login'))
+  }
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -49,7 +54,8 @@ function NavBar(props) {
 
           <Button
             color="inherit"
-            href="/login"
+           // href="/login"
+            onClick={handleLogin}
           >Login</Button>
         </Toolbar>
       </AppBar>

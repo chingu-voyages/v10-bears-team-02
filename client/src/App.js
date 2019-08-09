@@ -27,13 +27,13 @@ function App(props) {
     <div className="App"> 
     
       <Route exact path="/" render={props => (
-        <>
-          <NavBar />
+          <>
+          <NavBar {...props} />
           <SearchBar />
           <HomePage />
           <QueriedPlants />
           {/* <PlantsLibrary /> */}
-        </>
+          </>
       )} /> 
       
       <Route path="/plant/:id" render={props => <SinglePlant {...props} />} />
