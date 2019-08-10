@@ -31,7 +31,6 @@ function NavBar(props) {
     props.history.push("/login")
   }
 
-  
   function handleLogOut(e) { 
     console.log(e)
       //e.preventDefault()
@@ -39,10 +38,6 @@ function NavBar(props) {
     
   }
 
-  function handleLogin() { 
-
-    console.log(props.history.push('/login'))
-  }
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -53,7 +48,7 @@ function NavBar(props) {
           <Typography variant="h6" className={classes.title}>
             Garden Guru 
           </Typography>  
-
+          <SearchBar {...props} />
           {props.auth && <Button color="inherit" onClick={handleLogOut}>Log Out</Button>}
 
           <Button
