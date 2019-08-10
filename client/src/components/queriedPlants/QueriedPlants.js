@@ -8,12 +8,17 @@ import Divider from '@material-ui/core/Divider';
 
 
 function RenderPlants(props) {  
+    console.log(props)
+
+    function renderPlant(plantId) {
+        props.history.push(`/plant/${plantId}`)
+    }
     return props.plants ? (
         props.plants.map((plant, index) => {
             return (
                 <div key={index}>
                     <Divider />
-                    <ListItemLink href={"/plant/" + plant.id} >
+                    <ListItemLink onClick={() => renderPlant(plant.id)} >
                         <ListItemText primary={plant.common_name} />
                     </ListItemLink>
                 </div>
@@ -33,7 +38,7 @@ function QueriedPlants(props) {
         <div className={classes.root}>
 
         <List component="nav" aria-label="Plant Search Results">
-            <RenderPlants plants={props.plants}/>
+            <RenderPlants {...props}/>
         </List>
       </div>
     )
