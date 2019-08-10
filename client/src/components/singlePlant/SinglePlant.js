@@ -17,6 +17,22 @@ function RenderPlant(props){
     const handleChange = panel => (event, newExpanded) => {
       setExpanded(newExpanded ? panel : false);
     };
+
+    const renderCategories = () => {
+      props.plant.map(category => {
+        debugger
+        <ExpansionPanel square expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+          <ExpansionPanelSummary aria-controls="panel1d-content" id="panel1d-header">
+            <Typography>Collapsible Group Item #1</Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <Typography>
+              Lorem
+            </Typography>
+          </ExpansionPanelDetails>
+      </ExpansionPanel>
+      })
+    }
     return (
         <div>
         <ExpansionPanel square expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
