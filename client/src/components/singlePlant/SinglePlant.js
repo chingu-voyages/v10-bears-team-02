@@ -18,7 +18,6 @@ function RenderPlant(props){
 
   const stringFromObject = (obj) => {     
     return Object.entries(obj).map((item, index) => {
-      console.log(item)
         return item[0] + ': '+ item[1] + ' '
     })
   }
@@ -62,8 +61,7 @@ function RenderPlant(props){
     )                
   }
 
-  const RenderCategories = () => {
-    console.log(props.plant)
+  const RenderCategories = () => {  
     return (
     <>
       {
