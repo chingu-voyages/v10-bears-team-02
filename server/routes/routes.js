@@ -115,9 +115,7 @@ function routes(err,doc,app){
             doc.find(function(err,entries) {
               res.send(entries)
             })
-          })
-
-      
+          })      
     }
     return router
 }
