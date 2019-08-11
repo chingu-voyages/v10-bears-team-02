@@ -9,72 +9,100 @@ import  { fetchPlantStats }   from '../../actions/plantStats'
 
 
 
-function RenderPlant(props){
-    console.log(props.plant)
+function RenderPlant(props){  
+  const [expanded, setExpanded] = React.useState('panel1');
 
-    const [expanded, setExpanded] = React.useState('panel1');
+  const handleChange = panel => (event, newExpanded) => {
+    setExpanded(newExpanded ? panel : false);
+  } 
 
-    const handleChange = panel => (event, newExpanded) => {
-      setExpanded(newExpanded ? panel : false);
-    };
+  const stringFromObject = (obj) => {     
+    return Object.entries(obj).map((item, index) => {
+      console.log(item)
+        return item[0] + ': '+ item[1] + ' '
+    })
+  }
 
-    const renderCategories = () => {
-      props.plant.map(category => {
-        debugger
-        <ExpansionPanel square expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-          <ExpansionPanelSummary aria-controls="panel1d-content" id="panel1d-header">
-            <Typography>Collapsible Group Item #1</Typography>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <Typography>
-              Lorem
-            </Typography>
-          </ExpansionPanelDetails>
-      </ExpansionPanel>
-      })
-    }
+  const RenderDetailsObject = (objName, index) => {   
     return (
-        <div>
-        <ExpansionPanel square expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-        <ExpansionPanelSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography>Collapsible Group Item #1</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
-            Lorem
-          </Typography>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
-      <ExpansionPanel square expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-        <ExpansionPanelSummary aria-controls="panel2d-content" id="panel2d-header">
-          <Typography>Collapsible Group Item #2</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
-            Lorem ipsum 
-          </Typography>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
-      <ExpansionPanel square expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-        <ExpansionPanelSummary aria-controls="panel3d-content" id="panel3d-header">
-          <Typography>Collapsible Group Item #3</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <Typography>
-            Lorem ipsum dolor
-          </Typography>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>           
-        </div>
-    )
+      <React.Fragment key={index}>
+        {          
+          <ExpansionPanelDetails >
+              <Typography>
+              {objName[0]}: {stringFromObject(objName[1])}   
+              </Typography>
+          </ExpansionPanelDetails>
+        }        
+      </React.Fragment>
+    )       
+  }
+  
+  const RenderDetails = (props) => {           
+    return (          
+      <>      
+        {        
+          Object.entries(props.details).map((detName, index) => {
+            let details = []          
+            if (typeof detName[1] === 'string') {              
+              details.push(
+                <ExpansionPanelDetails key={index}>
+                  <Typography>
+                    {detName[0]} : {detName[1]}
+                  </Typography>
+                </ExpansionPanelDetails>    
+              )
+            }
+            if (typeof detName[1] === 'object') { 
+              details.push(RenderDetailsObject(detName, index))
+            }            
+            return details
+          })
+        }
+      </>
+    )                
+  }
+
+  const RenderCategories = () => {
+    console.log(props.plant)
+    return (
+    <>
+      {
+        Object.entries(props.plant).map((expTypes, typeIndex) => {          
+          let panel = []
+          if (expTypes[0] !== 'meta') {
+            panel.push( (
+            
+              <ExpansionPanel square expanded={expanded === 'panel' + typeIndex} onChange={handleChange('panel' + typeIndex)} key={typeIndex}>
+                <ExpansionPanelSummary aria-controls="panel1d-content" id={"panel" + typeIndex + " d-header"}>
+                  <Typography>{expTypes[0]}</Typography>
+                </ExpansionPanelSummary>
+                
+                <RenderDetails details={expTypes[1]}/>
+              
+
+              </ExpansionPanel>
+            ))
+          }
+          return panel
+         
+          }
+        )
+      }                                                       
+    </>                           
+  )}
+  
+  return (
+    <div>
+      <RenderCategories/>      
+    </div>
+  )
 }
 
 
 function SinglePlant(props) {
     const classes = useStyles()
     const { fetchPlantStats } = props
-    const { id } = props.match.params
-    console.log(props)
+    const { id } = props.match.params   
     useEffect(() => {  
     
             fetchPlantStats(id)
@@ -82,14 +110,13 @@ function SinglePlant(props) {
 
 
     return (
-        <div className={classes.root}>
-            <RenderPlant plant={props.plant} />
+      <div className={classes.root}>
+        <RenderPlant plant={props.plant} />
       </div>
     )
 }
 
-function mapStateToProps(state) {
-    console.log(state)
+function mapStateToProps(state) {   
     return {
         plant: state.currentPlant
     }
