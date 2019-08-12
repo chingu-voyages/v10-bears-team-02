@@ -34,20 +34,7 @@ function PlantsLibrary(props) {
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
               These are the current plants in your garden.
             </Typography>
-            <div className={classes.heroButtons}>
-              <Grid container spacing={2} justify="center">
-                <Grid item>
-                  <Button variant="contained" color="primary">
-                    Create Plant
-                  </Button>
-                </Grid>
-                <Grid item>
-                  {/* <Button variant="outlined" color="primary">
-                    Secondary action
-                  </Button> */}
-                </Grid>
-              </Grid>
-            </div>
+            
           </Container>
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
