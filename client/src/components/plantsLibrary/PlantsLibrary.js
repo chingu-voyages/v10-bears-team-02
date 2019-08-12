@@ -28,6 +28,9 @@ function PlantsLibrary(props) {
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
+            <Typography variant="h5" align="center" color="textSecondary" paragraph>
+              Welcome, {props.nickname}!
+            </Typography>
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
               My Garden
             </Typography>

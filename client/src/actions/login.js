@@ -27,7 +27,6 @@ export const submitLogin = (userCreds, history) => {
        dispatch(submitLoginCredentials()) 
         return axios.post('/api/local_auth/login', userCreds )        
             .then(response => {       
-                debugger             
                 dispatch(loginSuccess(response.data.userData))     
                 history.push('/mygarden')
             }
