@@ -18,14 +18,14 @@ import { connect } from 'react-redux';
 import { loadUserData } from '../../actions/plantStats';
 
 function PlantsLibrary(props) {
-  
+
   useEffect(() => {
     props.loadUserData()
   }, [])
 
   // hardcode cards until setup CRUD API on backend
   // const cards = props.plants;
-  const cards = [1,2,3,4,5,6,7]
+  const cards = props.plants;
   const classes = useStyles();
   return (
     <React.Fragment>
