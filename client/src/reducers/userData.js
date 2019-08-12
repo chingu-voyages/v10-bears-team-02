@@ -16,6 +16,9 @@ export default (state = initialState, action) => {
                 ...state, 
                 authenticated: action.payload
             }
+
+        case 'LOGIN_SUCCESS':
+            return action.payload
         
         case 'LOG_OUT' :
             return {
