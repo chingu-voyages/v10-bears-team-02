@@ -10,9 +10,6 @@ import SearchBar from '../searchBar/SearchBar';
 import { submitLogOut } from '../../actions/logout'
 import { verifyAuth } from '../../actions/verifyAuth'
 
-
-
-
 function NavBar(props) {
   const classes = useStyles();
 

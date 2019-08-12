@@ -18,15 +18,10 @@ import { connect } from 'react-redux';
 import { loadUserData } from '../../actions/plantStats';
 
 function PlantsLibrary(props) {
-
-  // this causes the component to infinitely rerender
-
-  // const loadUser = () => {    
-  //   props.loadUserData()
-  // }
-
-  // useEffect(loadUser)
-
+  
+  useEffect(() => {
+    props.loadUserData()
+  }, [])
 
   // hardcode cards until setup CRUD API on backend
   // const cards = props.plants;
