@@ -10,18 +10,18 @@ function SearchBar(props) {
 
     const classes = useStyles();
 
-    return (
-
-        <form className={classes.search} onSubmit={(event) => {
-                event.preventDefault()
+    return ( 
+                   
+        <form className={classes.searchForm} onSubmit={(event) => {
+            event.preventDefault()
+            console.log(props)
                 props.submitQuery(props.query)
                 props.history.push("/searchresults")
             }
         }>         
-         <div>
-             <InputField color='white' name='query' label='Search for a plant'/>
-        </div>
-        <Button color='primary' variant='outlined' type='submit'>             
+      
+        <InputField className={classes.search} color='white' name='query' placeholder='Search for a plant'/>       
+        <Button className={classes.searchButton} color='default' variant='outlined' type='submit'>             
             <SearchIcon /> 
         </Button>
         </form>
