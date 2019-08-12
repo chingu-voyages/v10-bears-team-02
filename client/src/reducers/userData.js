@@ -31,6 +31,9 @@ export default (state = initialState, action) => {
                 plantsLibrary: [...state.plantsLibrary, action.payload]
             }
 
+        case 'USER_DATA_SUCCESS':
+            return action.payload
+
         default:
             return state
     }
