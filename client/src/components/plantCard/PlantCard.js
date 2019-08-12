@@ -11,6 +11,7 @@ import useStyles from './PlantCardStyles';
 
 export default function PlantCard(props) {
   const classes = useStyles();
+  const { plant } = props;
   console.log(props)
   return (
     <Card className={classes.card}>
@@ -22,10 +23,10 @@ export default function PlantCard(props) {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Common Name
+            {plant.names.common_name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Scientific Name
+             {plant.names.scientific_name}
           </Typography>
         </CardContent>
       </CardActionArea>

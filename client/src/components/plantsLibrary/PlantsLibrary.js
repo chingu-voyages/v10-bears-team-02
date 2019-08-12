@@ -100,7 +100,6 @@ function PlantsLibrary(props) {
 // somehow plants is updating after clicks "add plant to library", but then it is reset to what it was before
 
 const mapStateToProps = (state) => {
-  debugger
   return {
     plants: state.userData.plantsLibrary,
     nickname: state.userData.nickname
