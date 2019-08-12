@@ -9,9 +9,9 @@ import Typography from '@material-ui/core/Typography';
 import useStyles from './PlantCardStyles';
 
 
-export default function PlantCard() {
+export default function PlantCard(props) {
   const classes = useStyles();
-
+  console.log(props)
   return (
     <Card className={classes.card}>
       <CardActionArea>

@@ -25,7 +25,8 @@ function PlantsLibrary(props) {
 
   // hardcode cards until setup CRUD API on backend
   // const cards = props.plants;
-  const cards = props.plants;
+  console.log(props.plants)
+  const plants = props.plants;
   const classes = useStyles();
   return (
     <React.Fragment>
@@ -49,9 +50,9 @@ function PlantsLibrary(props) {
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map(card => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <PlantCard />
+            {plants.map(plant => (
+              <Grid item key={plant.id} xs={12} sm={6} md={4}>
+                <PlantCard plant={plant} />
 
                 {/* <Card className={classes.card}>
                   <CardMedia

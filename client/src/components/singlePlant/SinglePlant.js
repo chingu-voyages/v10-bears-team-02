@@ -63,6 +63,7 @@ function RenderPlant(props){
   }
 
   const RenderCategories = () => {  
+    console.log(props)
     return (
     <>
       {
@@ -91,11 +92,11 @@ function RenderPlant(props){
   )}
   
   return (
-    <div>
-      <Button variant='contained' onClick={() => props.addPlant()}>
+    <div style={{padding: 10}}>
+      <Button size='small' variant='outlined' color='primary' onClick={() => props.addPlant(props.plant)}>
         Add Plant to My Garden
       </Button>
-      <RenderCategories/>      
+      <RenderCategories />      
     </div>
   )
 }
@@ -113,7 +114,7 @@ function SinglePlant(props) {
 
     return (
       <div className={classes.root}>
-        <RenderPlant plant={props.plant} />
+        <RenderPlant {...props} />
       </div>
     )
 }
