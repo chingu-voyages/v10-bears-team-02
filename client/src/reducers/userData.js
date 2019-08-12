@@ -26,7 +26,6 @@ export default (state = initialState, action) => {
             }
 
         case 'ADD_PLANT_SUCCESS':
-            debugger
             return {
                 ...state,
                 plantsLibrary: [...state.plantsLibrary, action.payload]

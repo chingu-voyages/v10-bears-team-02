@@ -73,7 +73,7 @@ let def = {
         native_status: 'L48(I)',
         main_species_id: null,
         is_main_species: true,
-        images: [ [Object] ],
+        images: [Object],
         id: 175919,
         growth:
         { temperature_minimum: [Object],
@@ -176,7 +176,7 @@ function formatPlant(oldObject) {
         names: {
             "common_name": oldObject.common_name,
             "family_common_name": "string",
-            "scientific_name": "string",
+            "scientific_name": oldObject.scientific_name,
         },     
         
         growth: {		

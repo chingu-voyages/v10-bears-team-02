@@ -98,6 +98,7 @@ function PlantsLibrary(props) {
 }
 
 // somehow plants is updating after clicks "add plant to library", but then it is reset to what it was before
+// shows updated state SOMETIMES.. see updated library without refreshing ?
 
 const mapStateToProps = (state) => {
   return {

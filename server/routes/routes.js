@@ -102,6 +102,7 @@ function routes(err,doc,app){
               }
             },
             function(err,user){
+              console.log("RIGHT HERE ", user.plantsLibrary[user.plantsLibrary.length-1])
             res.send({user,err})
             })
           })
