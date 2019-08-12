@@ -98,6 +98,7 @@ function PlantsLibrary(props) {
 }
 
 const mapStateToProps = (state) => {
+  debugger
   return {
     plants: state.userData.plantsLibrary,
     nickname: state.userData.nickname

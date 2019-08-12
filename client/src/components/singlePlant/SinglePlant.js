@@ -93,7 +93,15 @@ function RenderPlant(props){
   
   return (
     <div style={{padding: 10}}>
-      <Button size='small' variant='outlined' color='primary' onClick={() => props.addPlant(props.plant)}>
+      <Button 
+        size='small' 
+        variant='outlined' 
+        color='primary' 
+        onClick={() => {
+          props.addPlant(props.plant)
+          props.history.push('/mygarden')
+        }}
+        >
         Add Plant to My Garden
       </Button>
       <RenderCategories />      
