@@ -15,9 +15,19 @@ import Container from '@material-ui/core/Container';
 //import Link from '@material-ui/core/Link';
 import PlantCard from '../../components/plantCard/PlantCard';
 import { connect } from 'react-redux';
+import { loadUserData } from '../../actions/plantStats';
 
 function PlantsLibrary(props) {
-  useEffect(props.loadUserData);
+
+  // this causes the component to infinitely rerender
+
+  // const loadUser = () => {    
+  //   props.loadUserData()
+  // }
+
+  // useEffect(loadUser)
+
+
   // hardcode cards until setup CRUD API on backend
   // const cards = props.plants;
   const cards = [1,2,3,4,5,6,7]
