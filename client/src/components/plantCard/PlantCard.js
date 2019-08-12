@@ -9,23 +9,24 @@ import Typography from '@material-ui/core/Typography';
 import useStyles from './PlantCardStyles';
 
 
-export default function PlantCard() {
+export default function PlantCard(props) {
   const classes = useStyles();
-
+  const { plant } = props;
+  console.log(plant.meta)
   return (
     <Card className={classes.card}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="http://miriadna.com/desctopwalls/images/max/The-sprout.jpg"
+          image={plant.meta.image_urls[0] ? plant.meta.image_urls[0].url : "http://miriadna.com/desctopwalls/images/max/The-sprout.jpg"}
           title="Contemplative Reptile"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Common Name
+            {plant.names.common_name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Scientific Name
+             {plant.names.scientific_name}
           </Typography>
         </CardContent>
       </CardActionArea>

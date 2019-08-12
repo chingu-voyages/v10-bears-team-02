@@ -90,16 +90,21 @@ function routes(err,doc,app){
           })
 
           // add queried plant to user library
+          // find doc.update 
           router.route('/api/library/create')
-          .post((req, res) => {
-            debugger
-            doc.create({},function(err,user){
-              res.send(user)
+          .post((req,res) => {
+            doc.findOneAndUpdate({
+              email: req.user.email
+            },
+            {
+              $push: {
+                plantsLibrary: req.body.plant
+              }
+            },
+            function(err,user){
+              console.log("RIGHT HERE ", user.plantsLibrary[user.plantsLibrary.length-1])
+            res.send({user,err})
             })
-            // doc.create({email: 'test@123.com', username: 'test3'},function(err, userdata) {
-            //   console.log(userdata)
-            //   res.send(userdata)
-            // })
           })
 
           // query

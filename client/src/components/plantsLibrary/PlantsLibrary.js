@@ -18,14 +18,15 @@ import { connect } from 'react-redux';
 import { loadUserData } from '../../actions/plantStats';
 
 function PlantsLibrary(props) {
-  
+
   useEffect(() => {
     props.loadUserData()
   }, [])
 
   // hardcode cards until setup CRUD API on backend
   // const cards = props.plants;
-  const cards = [1,2,3,4,5,6,7]
+  console.log(props.plants)
+  const plants = props.plants;
   const classes = useStyles();
   return (
     <React.Fragment>
@@ -49,9 +50,9 @@ function PlantsLibrary(props) {
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map(card => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <PlantCard />
+            {plants.map(plant => (
+              <Grid item key={plant.id} xs={12} sm={6} md={4}>
+                <PlantCard plant={plant} />
 
                 {/* <Card className={classes.card}>
                   <CardMedia
@@ -95,6 +96,9 @@ function PlantsLibrary(props) {
     </React.Fragment>
   );
 }
+
+// somehow plants is updating after clicks "add plant to library", but then it is reset to what it was before
+// shows updated state SOMETIMES.. see updated library without refreshing ?
 
 const mapStateToProps = (state) => {
   return {

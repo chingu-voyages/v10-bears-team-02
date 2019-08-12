@@ -58,9 +58,9 @@ export const fetchPlantStats = (id) => {
 export const addPlant = (plant) => {
     return (dispatch) => {
         return axios.post('/api/library/create', {plant: plant})
-        .then(response => {
-            dispatch(addPlantSuccess(response.data))
-        })
+        .then(
+            dispatch(addPlantSuccess(plant))
+        )
     }
 }
 
