@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import useStyles from './HomePageStyles';
@@ -23,12 +22,6 @@ function Layout(props) {
     </section>
   );
 }
-
-Layout.propTypes = {
-  backgroundClassName: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
-  classes: PropTypes.object.isRequired,
-};
 
 
 function HomePage(props) {
@@ -67,8 +60,5 @@ function HomePage(props) {
   );
 }
 
-HomePage.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 export default HomePage;
