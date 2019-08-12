@@ -1,6 +1,6 @@
 const initialState = {
     email: '',
-    username: '',
+    nickname: '',
     plantsLibrary: [],
     currentPlant: {
         name: '',
