@@ -80,9 +80,10 @@ function routes(err,doc,app){
             })
           })
 
-          // create
+          // add queried plant to user library
           router.route('/api/library/create')
           .post((req, res) => {
+            debugger
             doc.create({},function(err,user){
               res.send(user)
             })

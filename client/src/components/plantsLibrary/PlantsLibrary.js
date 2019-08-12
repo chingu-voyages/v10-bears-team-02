@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 //import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 // import CameraIcon from '@material-ui/icons/PhotoCamera';
@@ -17,6 +17,7 @@ import PlantCard from '../../components/plantCard/PlantCard';
 import { connect } from 'react-redux';
 
 function PlantsLibrary(props) {
+  useEffect(props.loadUserData);
   // hardcode cards until setup CRUD API on backend
   // const cards = props.plants;
   const cards = [1,2,3,4,5,6,7]
@@ -97,4 +98,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(PlantsLibrary)
+export default connect(mapStateToProps, { loadUserData })(PlantsLibrary)
