@@ -25,6 +25,12 @@ export default (state = initialState, action) => {
                 initialState, // be sure default state has authenticated = false                 
             }
 
+        case 'ADD_PLANT_SUCCESS':
+            return {
+                ...state,
+                plantsLibrary: [...state.plantsLibrary, action.payload]
+            }
+
         default:
             return state
     }
