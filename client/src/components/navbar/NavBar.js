@@ -37,16 +37,20 @@ function NavBar(props) {
     
   }
 
+  function redirectHome() {
+    props.history.push('/')
+  }
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="Menu">
-            <MenuIcon />
+          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="Menu" onClick={redirectHome}>
+            <Typography variant="h6" className={classes.title}>
+              Garden Guru 
+            </Typography>  
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            Garden Guru 
-          </Typography>  
+          
           <SearchBar {...props} />
           {props.auth && <Button color="inherit" onClick={handleLogOut}>Log Out</Button>}
 
