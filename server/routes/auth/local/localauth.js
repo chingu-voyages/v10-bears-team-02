@@ -96,7 +96,8 @@ function routes(doc, app) {
                     if (err) { return res.send(err); }
                     console.log({ "Req.user": req.user })
                    // res.redirect('/')
-                    res.send({ message: 'Logged in', auth: true });        
+                    req.user.authenticated = true;
+                    res.send({ message: 'Logged in', auth: true, userData: req.user });        
                    
                 });
             })(req, res);

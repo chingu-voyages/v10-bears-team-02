@@ -1,6 +1,6 @@
 const initialState = {
     email: '',
-    username: '',
+    nickname: '',
     plantsLibrary: [],
     currentPlant: {
         name: '',
@@ -16,11 +16,23 @@ export default (state = initialState, action) => {
                 ...state, 
                 authenticated: action.payload
             }
+
+        case 'LOGIN_SUCCESS':
+            return action.payload
         
         case 'LOG_OUT' :
             return {
                 initialState, // be sure default state has authenticated = false                 
             }
+
+        case 'ADD_PLANT_SUCCESS':
+            return {
+                ...state,
+                plantsLibrary: [...state.plantsLibrary, action.payload]
+            }
+
+        case 'USER_DATA_SUCCESS':
+            return action.payload
 
         default:
             return state

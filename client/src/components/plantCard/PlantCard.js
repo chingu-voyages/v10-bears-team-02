@@ -14,7 +14,7 @@ export default function PlantCard() {
 
   return (
     <Card className={classes.card}>
-      <CardActionArea>s
+      <CardActionArea>
         <CardMedia
           className={classes.media}
           image="http://miriadna.com/desctopwalls/images/max/The-sprout.jpg"

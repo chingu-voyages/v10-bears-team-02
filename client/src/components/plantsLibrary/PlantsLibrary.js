@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 //import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 // import CameraIcon from '@material-ui/icons/PhotoCamera';
@@ -15,8 +15,14 @@ import Container from '@material-ui/core/Container';
 //import Link from '@material-ui/core/Link';
 import PlantCard from '../../components/plantCard/PlantCard';
 import { connect } from 'react-redux';
+import { loadUserData } from '../../actions/plantStats';
 
 function PlantsLibrary(props) {
+  
+  useEffect(() => {
+    props.loadUserData()
+  }, [])
+
   // hardcode cards until setup CRUD API on backend
   // const cards = props.plants;
   const cards = [1,2,3,4,5,6,7]
@@ -28,6 +34,9 @@ function PlantsLibrary(props) {
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
+            <Typography variant="h5" align="center" color="textSecondary" paragraph>
+              Welcome, {props.nickname}!
+            </Typography>
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
               My Garden
             </Typography>
@@ -89,8 +98,9 @@ function PlantsLibrary(props) {
 
 const mapStateToProps = (state) => {
   return {
-    plants: state.userData.plantsLibrary
+    plants: state.userData.plantsLibrary,
+    nickname: state.userData.nickname
   }
 }
 
-export default connect(mapStateToProps)(PlantsLibrary)
+export default connect(mapStateToProps, { loadUserData })(PlantsLibrary)

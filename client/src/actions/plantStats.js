@@ -1,3 +1,5 @@
+import { CardActions } from '@material-ui/core';
+
 const axios = require('axios')
 
 //Action Creator
@@ -22,6 +24,20 @@ const getPlantStats = (payload) => {
     }
 }
 
+const addPlantSuccess = (payload) => {
+    return {
+        type: 'ADD_PLANT_SUCCESS',
+        payload
+    }
+}
+
+const getUserDataSuccess = (payload) => {
+    return {
+        type: 'USER_DATA_SUCCESS',
+        payload
+    }
+}
+
 
 
 //Action
@@ -37,4 +53,22 @@ export const fetchPlantStats = (id) => {
         )
     }
 
+}
+
+export const addPlant = (plant) => {
+    return (dispatch) => {
+        return axios.post('/api/library/create', {plant: plant})
+        .then(response => {
+            dispatch(addPlantSuccess(response.data))
+        })
+    }
+}
+
+export const loadUserData = () => {
+    return (dispatch) => {
+        return axios.get('/api/userData')
+        .then(response => {
+            dispatch(getUserDataSuccess(response.data))
+        })
+    }
 }

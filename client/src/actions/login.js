@@ -8,11 +8,12 @@ const submitLoginCredentials = () => {
     }
 }
 
-// const loginSuccess = () => {
-//     return {
-//         type: 'LOGIN_SUCCESS'      
-//     }
-// }
+const loginSuccess = (payload) => {
+    return {
+        type: 'LOGIN_SUCCESS',
+        payload     
+    }
+}
 
 // const loginFailed = () => { 
 //     return {
@@ -25,8 +26,8 @@ export const submitLogin = (userCreds, history) => {
     return (dispatch) => {        
        dispatch(submitLoginCredentials()) 
         return axios.post('/api/local_auth/login', userCreds )        
-            .then(response => {                    
-                // set state so client can redirect to homepage which will run verifyAuth.               
+            .then(response => {       
+                dispatch(loginSuccess(response.data.userData))     
                 history.push('/mygarden')
             }
         )

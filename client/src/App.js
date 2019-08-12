@@ -20,7 +20,7 @@ function App(props) {
     <div className="App"> 
       <Route path="*" render={props => <NavBar {...props} />} />
       <Route exact path="/" render={props => (
-          <HomePage />
+          <HomePage {...props} />
       )} /> 
       
       <Route path="/searchresults" render={props => <QueriedPlants {...props} />} />

@@ -80,9 +80,19 @@ function routes(err,doc,app){
             })
           })
 
-          // create
+          // get user
+          router.route('/api/userData')
+          .get((req,res) => {
+            if(req.user){
+              return res.send(req.user)
+            }
+            res.end()
+          })
+
+          // add queried plant to user library
           router.route('/api/library/create')
           .post((req, res) => {
+            debugger
             doc.create({},function(err,user){
               res.send(user)
             })
