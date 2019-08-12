@@ -23,7 +23,7 @@ function NavBar(props) {
     console.log(e)
       //e.preventDefault()
       props.submitLogOut()
-    
+      redirectHome()
   }
 
   function redirectHome() {
