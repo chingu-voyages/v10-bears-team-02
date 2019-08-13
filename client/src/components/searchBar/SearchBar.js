@@ -1,18 +1,18 @@
 import React from 'react'
 import InputField from '../inputField/InputField'
 import Button from '@material-ui/core/Button'
+import SearchIcon from '@material-ui/icons/Search';
 import useStyles from './SearchBarStyles'
 import { submitQuery } from '../../actions/searchResults'
 import { connect } from 'react-redux'
-import SearchIcon from '@material-ui/icons/Search';
 
 function SearchBar(props) {
 
     const classes = useStyles();
 
     return ( 
-                   
-        <form className={classes.searchForm} onSubmit={(event) => {
+
+        <form className={classes.search} onSubmit={(event) => {
             event.preventDefault()
             console.log(props)
                 props.submitQuery(props.query)
@@ -20,10 +20,10 @@ function SearchBar(props) {
             }
         }>         
       
-        <InputField className={classes.search} color='white' name='query' placeholder='Search for a plant'/>       
-        <Button className={classes.searchButton} color='default' variant='outlined' type='submit'>             
-            <SearchIcon /> 
-        </Button>
+            <InputField className={classes.search} color='white' name='query' placeholder='Search for a plant'/>       
+            <Button className={classes.searchButton} color='default' variant='outlined' type='submit'>             
+                <SearchIcon /> 
+            </Button>
         </form>
     )
 
