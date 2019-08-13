@@ -50,8 +50,8 @@ function PlantsLibrary(props) {
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {plants.map(plant => (
-              <Grid item key={plant.id} xs={12} sm={6} md={4}>
+            {plants.map((plant, index) => (
+              <Grid item key={index} xs={12} sm={6} md={4}>
                 <PlantCard plant={plant} />
 
                 {/* <Card className={classes.card}>
