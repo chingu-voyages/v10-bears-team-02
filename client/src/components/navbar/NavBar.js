@@ -73,8 +73,12 @@ function NavBar(props) {
               Garden Guru 
             </Typography>  
           </IconButton>
+          <div className={classes.root} />
+
+         
 
           <SearchBar {...props} className={classes.title} />
+          <div className={classes.root} />
           <UserActions {...props}/>
          
           
