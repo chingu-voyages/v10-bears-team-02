@@ -2,23 +2,28 @@ const express   = require('express')
 const router    = express.Router()
 const passport  = require('passport')
 const LocalStrategy = require('passport-local').Strategy
+const bcrypt = require('bcrypt')
 
 
 
 function routes(doc, app) { 
     passport.use(new LocalStrategy({usernameField: 'email', passwordField: 'password'},      
         function (username, password, done) {  
-            doc.findOne({ email: username }, function (err, user) {                 
+            doc.findOne({ email: username }, function (err, user) {    
+                if (err) { return done(err); }  
                 if (!user) {                    
                     return done(null, false, {message: "No user found"});
                 }
                 //use bcrypt here  
-                if (user.password !== password) {                               
-                    return done(null, false, {message: "Bad password"});
-                }
-                if (err) { return done(err); }   
-                
-                return done(null, user);
+                bcrypt.compare(password, user.password, (err, res)=>{
+                 
+                    if(err)return done(err, null)
+                    if(!res)return done(null, false, {message: "Bad password"} )
+ 
+                    return done(null, user)
+                })   
+
+               
             });
         }
     ));
@@ -56,24 +61,24 @@ function routes(doc, app) {
                 if(user) return res.send({errors: [{msg:"User already exists try logging in"}]})      
                 
                 //salt and hash password
-                // bcrypt.hash(req.body.password, 10, function(hasherr, hash){                    
-                //     if(hasherr) return res.send({errors: [{ msg: 'hashing error'}]})
-
+                bcrypt.hash(userCreds.password, 10, function(hasherr, hash){                    
+                    if(hasherr) return res.send({errors: [{ msg: 'hashing error'}]})
+                    doc.create({                                                             
+                        email: userCreds.email, // unique username   
+                        nickname: userCreds.nickname,
+                        password: hash                                        
+                    },(docerr, result)=>{
+                        if(docerr)return res.send({errors:[{msg:docerr}]})
+                        return res.send({message: "Sign up successfull! Try logging in with your new username and password", result})
+                        
+                    }) 
                     
-                // })  
+                })  
                 
 
                 //should salt and hash password above
                 console.log(userCreds)
-                doc.create({                                                             
-                    email: userCreds.email, // unique username   
-                    nickname: userCreds.nickname,
-                    password: userCreds.password                                          
-                },(docerr, result)=>{
-                    if(docerr)return res.send({errors:[{msg:docerr}]})
-                    return res.send({message: "Sign up successfull! Try logging in with your new username and password", result})
-                    
-                }) 
+                
 
             })                            
         }
