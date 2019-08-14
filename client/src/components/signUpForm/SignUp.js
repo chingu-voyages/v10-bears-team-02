@@ -20,9 +20,18 @@ function SignUp(props) {
 
     function handleSumbit(e) { 
         e.preventDefault()        
-        props.submitSignUp({email, nickname, password})        
-    }
+      props.submitSignUp({ email, nickname, password })  
+      
+  }
+  
+  function SignUpMessage() { 
+    return (
+      <Typography component="h1" variant="h5">
+        {props.signup_status}
+      </Typography>
+    )
     
+  }   
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -80,8 +89,9 @@ function SignUp(props) {
             <Grid container>            
                 <Grid item>
                 <Link href="/login" variant="body2">
-                    {"Already have an account? Sign In"}
+                    {"Already have an account? Login here"}
                 </Link>
+                <SignUpMessage />
                 </Grid>
             </Grid>
         </form>
@@ -91,4 +101,10 @@ function SignUp(props) {
   );
 }
 
-export default connect(null, {submitSignUp})(SignUp)
+const mapStateToProps = (state) => {
+  return {
+    signup_status: state.signup_status
+  }
+}
+
+export default connect(mapStateToProps, {submitSignUp})(SignUp)

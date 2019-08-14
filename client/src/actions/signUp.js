@@ -27,14 +27,15 @@ export const submitSignUp = (userCreds) => {
     return (dispatch) => {            
        dispatch(submitSignUpCredentials())       
         return axios.post('/api/local_auth/signup', {userCreds})        
-            .then(response => {                    
-                console.log({'signup_response':response})  
+            .then(response => {                                           
                 if (response.data.error) {
                     //send errors to client
-                    dispatch(singUpError(response.data.error))
+                    let error = response.data.error                    
+                    dispatch(singUpError(error))
                 } 
                 if (response.data.message) { 
-                    dispatch(signUpSuccess(response.data.message))  
+                    let message = response.data.message                    
+                    dispatch(signUpSuccess(message))  
                 }
 
                                                   
