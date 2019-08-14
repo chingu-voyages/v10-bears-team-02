@@ -11,15 +11,12 @@ function connect(){
     return new Promise((resolve, reject)=>{    
       
         if(database){
-            //already connected to db 
-            console.log('have db')
+            //already connected to db       
             resolve(database)        
            
        }else{
-           console.log('connecting db')
            mongoose.connect(process.env.MONGO_ATLAS_URI, {useNewUrlParser: true, dbName: 'GardenGuru'}).then(()=>{
                //mongoose connect resolves to undefined set db manually
-                console.log('new db resolved')
                 let userSchema = new Schema({
                     email: String, //unique name works as indentifier
                     nickname: String, // personal name not unique
@@ -43,7 +40,6 @@ function connect(){
                resolve(doc)
                
            },(err)=>{
-               console.log('Database error:' + err)
                reject(err)
             })           
         }

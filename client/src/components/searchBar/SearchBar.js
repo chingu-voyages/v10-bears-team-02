@@ -13,8 +13,7 @@ function SearchBar(props) {
     return ( 
 
         <form className={classes.search} onSubmit={(event) => {
-            event.preventDefault()
-            console.log(props)
+                event.preventDefault()         
                 props.submitQuery(props.query)
                 props.history.push("/searchresults")
             }

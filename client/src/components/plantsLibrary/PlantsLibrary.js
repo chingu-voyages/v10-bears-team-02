@@ -25,7 +25,6 @@ function PlantsLibrary(props) {
 
   // hardcode cards until setup CRUD API on backend
   // const cards = props.plants;
-  console.log(props.plants)
   const plants = props.plants;
   const classes = useStyles();
   return (

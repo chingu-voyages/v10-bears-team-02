@@ -63,7 +63,6 @@ function RenderPlant(props){
   }
 
   const RenderCategories = () => {  
-    console.log(props)
     return (
     <>
       {

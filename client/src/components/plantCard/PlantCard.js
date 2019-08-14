@@ -12,7 +12,6 @@ import useStyles from './PlantCardStyles';
 export default function PlantCard(props) {
   const classes = useStyles();
   const { plant } = props;
-  console.log(plant.meta)
 
   function redirectGarden(id) {
    
