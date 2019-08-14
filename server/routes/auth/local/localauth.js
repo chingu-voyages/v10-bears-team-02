@@ -56,30 +56,24 @@ function routes(doc, app) {
             doc.findOne({ 'email': userCreds.email }, (err, user) => {
                 //database error
                
-                if (err) return res.send({ errors: [{ msg: err }]})                
+                if (err) return res.send({error: "Database find error"})                
                 //user already exists
-                if(user) return res.send({errors: [{msg:"User already exists try logging in"}]})      
+                if(user) return res.send({error: "User email already exists"})      
                 
                 //salt and hash password
                 bcrypt.hash(userCreds.password, 10, function(hasherr, hash){                    
-                    if(hasherr) return res.send({errors: [{ msg: 'hashing error'}]})
+                    if(hasherr) return res.send({error: 'hashing error'})
                     doc.create({                                                             
                         email: userCreds.email, // unique username   
                         nickname: userCreds.nickname,
                         password: hash                                        
                     },(docerr, result)=>{
-                        if(docerr)return res.send({errors:[{msg:docerr}]})
+                        if(docerr)return res.send({error: 'Database create error'})
                         return res.send({message: "Sign up successfull! Try logging in with your new username and password", result})
                         
                     }) 
                     
-                })  
-                
-
-                //should salt and hash password above
-                console.log(userCreds)
-                
-
+                })                                          
             })                            
         }
 
@@ -99,7 +93,7 @@ function routes(doc, app) {
 
                 req.logIn(user, function(err) {
                     if (err) { return res.send(err); }
-                    console.log({ "Req.user": req.user })
+                    console.log({ "Req_user": req.user })
                    // res.redirect('/')
                     req.user.authenticated = true;
                     res.send({ message: 'Logged in', auth: true, userData: req.user });        

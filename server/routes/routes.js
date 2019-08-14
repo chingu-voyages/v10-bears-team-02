@@ -30,7 +30,7 @@ function routes(err,doc,app){
       passport.deserializeUser(function (id, done) {
         console.log('deserializeUser')
         doc.findById(id).then((user) => { 
-          console.log(user)
+          console.log({user})
           done(null, user)
         })
         
