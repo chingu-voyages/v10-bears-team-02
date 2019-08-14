@@ -52,7 +52,7 @@ function PlantsLibrary(props) {
           <Grid container spacing={4}>
             {plants.map((plant, index) => (
               <Grid item key={index} xs={12} sm={6} md={4}>
-                <PlantCard plant={plant} />
+                <PlantCard plant={plant} {...props} />
 
                 {/* <Card className={classes.card}>
                   <CardMedia

@@ -13,6 +13,11 @@ export default function PlantCard(props) {
   const classes = useStyles();
   const { plant } = props;
   console.log(plant.meta)
+
+  function redirectGarden(id) {
+   
+    props.history.push('/plant/' + id)
+  }
   return (
     <Card className={classes.card}>
       <CardActionArea>
@@ -34,7 +39,7 @@ export default function PlantCard(props) {
         <Button size="small" color="primary">
           Delete
         </Button>
-        <Button size="small" color="primary">
+        <Button size="small" color="primary" onClick={() => { redirectGarden(plant.meta.id) }} >
           More Details
         </Button>
       </CardActions>
