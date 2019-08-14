@@ -14,7 +14,6 @@ function NavBar(props) {
   const classes = useStyles();
 
   const checkAuth = () => {    
-    console.log('check for cookie and deserialize user')
     props.verifyAuth()
   }
 
@@ -25,7 +24,6 @@ function NavBar(props) {
   }
 
   function handleLogOut(e) { 
-    console.log(e)
       //e.preventDefault()
       props.submitLogOut()
       redirectHome()
@@ -41,7 +39,6 @@ function NavBar(props) {
 
   function UserActions(props) {
     const loggedIn = props.auth
-    console.log(props)
     if (loggedIn) {
       return (
         <div>            

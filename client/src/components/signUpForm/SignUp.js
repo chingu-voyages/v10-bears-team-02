@@ -31,8 +31,7 @@ function SignUp(props) {
       </Typography>
     )
     
-  }
-    console.log(props.signup_status)
+  }   
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
