@@ -74,8 +74,7 @@ var router //= require('./routes/routes')(null,null,app)
         let doc = await dbDoc()       
         router = require('./routes/routes')(null, doc, app)
 
-    }catch(err){
-        console.log(err)      
+    }catch(err){   
         router = require('./routes/routes')(err)
     }    
     //add routes      
@@ -87,7 +86,7 @@ var router //= require('./routes/routes')(null,null,app)
     });   
     //start server
     app.listen(port, () => {         
-        console.log(`server started on port ${port}`)      
+       
     })
 
 })()

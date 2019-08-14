@@ -14,8 +14,7 @@ export const submitLogOut = () => {
       
         return axios.post('/api/local_auth/logout')        
             .then(response => {                    
-                // figure out way to redirect here, possbily pass history object and push.
-                console.log("logout", response)   
+                // figure out way to redirect here, possbily pass history object and push.  
                 dispatch(logOut(false)) // safe to assume we logged out with req.logOut() ??
                
             }

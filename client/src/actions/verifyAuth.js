@@ -1,5 +1,4 @@
 const axios = require('axios')
-
 //Action Creator
 
 const verifyCookie = () => { 
@@ -15,15 +14,12 @@ const cookieStatus = (payload) => {
     }
 }
 
-
-
 //Action
 export const verifyAuth = () => {    
     return (dispatch) => {        
        dispatch(verifyCookie()) 
         return axios.get('/api/local_auth/check' )        
             .then(response => {                    
-                console.log("check auth", response.data)  
                 dispatch(cookieStatus(response.data.auth)) //  userData.js Reducer
             }
         )

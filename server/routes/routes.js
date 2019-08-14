@@ -18,19 +18,13 @@ function routes(err,doc,app){
       app.use(passport.initialize())
       app.use(passport.session())
 
-      passport.serializeUser(function (user, done) {
-        console.log('serializeUser')
-               
-          return done(null, user.id);
-        
-       
+      passport.serializeUser(function (user, done) {               
+        return done(null, user.id);               
       });
       
 
-      passport.deserializeUser(function (id, done) {
-        console.log('deserializeUser')
+      passport.deserializeUser(function (id, done) {   
         doc.findById(id).then((user) => { 
-          console.log({user})
           done(null, user)
         })
         
@@ -52,7 +46,6 @@ function routes(err,doc,app){
           
         router.route('/api/plant')
           .post((req, res) => { 
-            //console.log(req.body)
             let url = process.env.TREFLE_API + '/plants/' + req.body.id + '?token=' + process.env.TREFLE_KEY 
             request(url, { json: true }, (err, response, body) => {
               
@@ -102,7 +95,6 @@ function routes(err,doc,app){
               }
             },
             function(err,user){
-              console.log("RIGHT HERE ", user.plantsLibrary[user.plantsLibrary.length-1])
             res.send({user,err})
             })
           })
@@ -111,7 +103,6 @@ function routes(err,doc,app){
           router.route('/api/library/query')
           .post((req,res) => {
             doc.find({username: 'test2'}, function(err,q) {
-              console.log(q)
               res.send(q)
             })
           })

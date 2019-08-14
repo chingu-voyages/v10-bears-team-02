@@ -40,7 +40,6 @@ function routes(doc, app) {
         .post((req, res) => { 
             if (req.user) {
                 req.logOut()
-                console.log(req.cookie)
             }
             return res.send({auth: false})
 
@@ -82,7 +81,6 @@ function routes(doc, app) {
     //authenticate user credentials route  passport.authenticate('local'), 
     router.route('/api/local_auth/login')
         .post(function (req, res) {
-            console.log({"cookie": req.cookies})
             passport.authenticate('local', function(err, user, info) {
                 if (err) { return res.send({ err, auth:false }); }
                 
@@ -93,7 +91,6 @@ function routes(doc, app) {
 
                 req.logIn(user, function(err) {
                     if (err) { return res.send(err); }
-                    console.log({ "Req_user": req.user })
                    // res.redirect('/')
                     req.user.authenticated = true;
                     res.send({ message: 'Logged in', auth: true, userData: req.user });        

@@ -8,8 +8,7 @@ import Divider from '@material-ui/core/Divider';
 
 
 function RenderPlants(props) {  
-    console.log(props)
-
+    
     function renderPlant(plantId) {
         props.history.push(`/plant/${plantId}`)
     }
