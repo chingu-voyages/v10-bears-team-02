@@ -82,11 +82,11 @@ function routes(doc, app) {
     router.route('/api/local_auth/login')
         .post(function (req, res) {
             passport.authenticate('local', function(err, user, info) {
-                if (err) { return res.send({ err, auth:false }); }
+                if (err) { return res.send({ error:"Authentication error", auth:false }); }
                 
                 if (!user) {                  
                     req.logOut()
-                    return res.send({info, auth :false});
+                    return res.send({error:"Invalid credentials", auth :false});
                 }
 
                 req.logIn(user, function(err) {
