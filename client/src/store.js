@@ -10,13 +10,15 @@ import searchResults from './reducers/searchResults'
 import plantStats from './reducers/plantStats'
 import userData from './reducers/userData';
 import signUp from './reducers/signUp'
+import login from './reducers/login'
 
 const rootReducer = combineReducers({
     formData, 
     searchResults, 
     currentPlant: plantStats,
     userData, 
-    signup_status: signUp
+    signup_status: signUp,
+    login_error: login
 })
 
 const middleware = [thunk]

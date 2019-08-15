@@ -22,6 +22,13 @@ function Login(props) {
         props.submitLogin({ email, password }, props.history)                    
     }
 
+    function LoginErrors() {
+        return (
+            <Typography component="h1" variant="h5">
+                {props.login_error}
+            </Typography>
+        )
+    }
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
@@ -69,8 +76,9 @@ function Login(props) {
                 <Grid container>            
                 <Grid item>
                     <Link href="/signup" variant="body2">
-                    {"Don't have an account? Sign Up"}
+                        {"Don't have an account? Sign Up"}
                     </Link>
+                    <LoginErrors/>        
                 </Grid>
                 </Grid>
             </form>
@@ -80,4 +88,10 @@ function Login(props) {
     );
 }
 
-export default connect(null, {submitLogin})(Login)
+const mapStateToProps = (state) => { 
+    return {
+        login_error: state.login_error
+      }
+}
+
+export default connect(mapStateToProps, {submitLogin})(Login)

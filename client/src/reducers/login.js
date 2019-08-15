@@ -1,4 +1,4 @@
-const initialState = {}
+const initialState = ''
 
 
 //need to add to store.
@@ -13,7 +13,7 @@ export default (state = initialState, action) => {
             return state
         
         case 'LOGIN_FAIL':
-            return state
+            return action.payload
 
             default:
                 return state;
