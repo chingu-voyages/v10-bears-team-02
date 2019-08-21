@@ -4,6 +4,7 @@ Garden Guru - A Home Gardening App | Voyage-10 | https://chingu.io/
 # Garden Guru
 
 Welcome to Garden Guru. This application is intended to provide a gardener with information about where, when, and how to grow plants. It makes uses of the Trefle plant API.
+
 Deployed to : https://gardenguru.herokuapp.com/
 
 ## Installation
