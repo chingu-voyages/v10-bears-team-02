@@ -24,7 +24,6 @@ function NavBar(props) {
   }
 
   function handleLogOut(e) { 
-      //e.preventDefault()
       props.submitLogOut()
       redirectHome()
   }
