@@ -4,7 +4,6 @@ import useStyles from './NavBarStyles'
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
 import { connect } from 'react-redux';
 import SearchBar from '../searchBar/SearchBar';
 import { submitLogOut } from '../../actions/logout'
@@ -65,7 +64,7 @@ function NavBar(props) {
       <AppBar position="static">
         <Toolbar>
           <Button edge="start" color="inherit" aria-label="Title" onClick={redirectHome}>
-            <Typography variant="h6" className={classes.grow}>
+            <Typography className={classes.grow} noWrap>
               Garden Guru 
             </Typography>  
           </Button>

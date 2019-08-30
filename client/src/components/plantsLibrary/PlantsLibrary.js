@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 //import AppBar from '@material-ui/core/AppBar';
-import Button from '@material-ui/core/Button';
+//import Button from '@material-ui/core/Button';
 // import CameraIcon from '@material-ui/icons/PhotoCamera';
 // import Card from '@material-ui/core/Card';
 // import CardActions from '@material-ui/core/CardActions';
@@ -18,10 +18,10 @@ import { connect } from 'react-redux';
 import { loadUserData } from '../../actions/plantStats';
 
 function PlantsLibrary(props) {
-
+let {loadUserData} = props
   useEffect(() => {
-    props.loadUserData()
-  }, [])
+    loadUserData()
+  }, [loadUserData])
 
   // hardcode cards until setup CRUD API on backend
   // const cards = props.plants;
