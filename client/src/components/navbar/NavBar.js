@@ -64,11 +64,11 @@ function NavBar(props) {
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" color="inherit" aria-label="Menu" onClick={redirectHome}>
+          <Button edge="start" color="inherit" aria-label="Title" onClick={redirectHome}>
             <Typography variant="h6" className={classes.grow}>
               Garden Guru 
             </Typography>  
-          </IconButton>
+          </Button>
           <div className={classes.grow} />
 
          
