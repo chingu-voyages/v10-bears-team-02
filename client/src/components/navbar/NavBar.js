@@ -62,20 +62,20 @@ function NavBar(props) {
   }
 
   return (
-    <div className={classes.root}>
+    <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="Menu" onClick={redirectHome}>
-            <Typography variant="h6" className={classes.title}>
+          <IconButton edge="start" color="inherit" aria-label="Menu" onClick={redirectHome}>
+            <Typography variant="h6" className={classes.grow}>
               Garden Guru 
             </Typography>  
           </IconButton>
-          <div className={classes.root} />
+          <div className={classes.grow} />
 
          
 
-          <SearchBar {...props} className={classes.title} />
-          <div className={classes.root} />
+          <SearchBar {...props} className={classes.grow} />
+          <div className={classes.grow} />
           <UserActions {...props}/>
          
           
