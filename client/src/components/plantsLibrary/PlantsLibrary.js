@@ -20,7 +20,7 @@ import { loadUserData } from '../../actions/plantStats';
 function PlantsLibrary(props) {
 
   const {loadUserData} = props
-  console.log('plants')
+
   useEffect(() => {
     loadUserData()
   }, [loadUserData])

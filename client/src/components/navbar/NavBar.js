@@ -15,7 +15,6 @@ function NavBar(props) {
   const {verifyAuth} = props
   
   useEffect (()=>{
-    console.log('verify auth')
     verifyAuth()
   })
 
