@@ -18,7 +18,9 @@ import { connect } from 'react-redux';
 import { loadUserData } from '../../actions/plantStats';
 
 function PlantsLibrary(props) {
-let {loadUserData} = props
+
+  const {loadUserData} = props
+  console.log('plants')
   useEffect(() => {
     loadUserData()
   }, [loadUserData])

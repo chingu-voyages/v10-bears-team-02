@@ -33,6 +33,12 @@ function ListItemLink(props) {
 function QueriedPlants(props) {  
     const classes = useStyles()
 
+    console.log('navbar')
+    React.useEffect (()=>{
+      console.log('test')
+    }, [])
+  
+
     return (
         <div className={classes.root}>
 

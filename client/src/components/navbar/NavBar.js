@@ -11,12 +11,14 @@ import { verifyAuth } from '../../actions/verifyAuth'
 
 function NavBar(props) {
   const classes = useStyles();
+  
+  const {verifyAuth} = props
+  
+  useEffect (()=>{
+    console.log('verify auth')
+    verifyAuth()
+  })
 
-  const checkAuth = () => {    
-    props.verifyAuth()
-  }
-
-  useEffect(checkAuth)
 
   function handleLogin() {
     props.history.push("/login")

@@ -8,7 +8,7 @@ const path = require('path');
 
 // load env variables
 if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').load()
+   let result = require('dotenv').config({path: __dirname +'/.env'})
 }
 
 // set port
@@ -75,18 +75,26 @@ var router //= require('./routes/routes')(null,null,app)
         router = require('./routes/routes')(null, doc, app)
 
     }catch(err){   
+        console.log(err)
         router = require('./routes/routes')(err)
     }    
     //add routes      
     app.use(router)
     
     // // Handle React routing, return all requests to React app
+    if (process.env.NODE_ENV === 'production') {
+        // Serve any static files
+       
+            
+    }
     app.get('/*', function (req, res) {           
         res.sendFile(path.join(__dirname, '/../client/build', 'index.html'));        
-    });   
+    });  
+    
+    
     //start server
     app.listen(port, () => {         
-       
+       console.log(`server start on port: ${port}`)
     })
 
 })()
