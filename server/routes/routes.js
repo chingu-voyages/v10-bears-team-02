@@ -25,6 +25,8 @@ function routes(err,doc,app){
 
       passport.deserializeUser(function (id, done) {   
         doc.findById(id).then((user) => { 
+          //set user.authenticated manually since it defaults to false from db
+          user.authenticated = true
           done(null, user)
         })
         

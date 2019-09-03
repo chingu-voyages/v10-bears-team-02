@@ -1,60 +1,40 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import useStyles from './NavBarStyles'
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux';
 import SearchBar from '../searchBar/SearchBar';
 import { submitLogOut } from '../../actions/logout'
-import { verifyAuth } from '../../actions/verifyAuth'
+
 
 function NavBar(props) {
   const classes = useStyles();
   
-  const {verifyAuth} = props
-  
-  useEffect (()=>{
-    verifyAuth()
-  })
-
-
-  function handleLogin() {
-    props.history.push("/login")
-  }
-
-  function handleLogOut(e) { 
-      props.submitLogOut()
-      redirectHome()
-  }
-
-  function redirectHome() {
-    props.history.push('/')
-  }
-
-  function redirectGarden() {
-    props.history.push('/mygarden')
-  }
+  const {submitLogOut} = props  
 
   function UserActions(props) {
     const loggedIn = props.auth
+    console.log(props)
     if (loggedIn) {
       return (
         <div>            
-          <Button color="inherit" onClick={redirectGarden}>My Garden</Button>
-          <Button
+          <NavLink color="inherit" to='/mygarden'>My Garden</NavLink>
+          <NavLink
             color="inherit"
-            onClick={handleLogOut}
-          >Log Out</Button>
+            to='/'
+            onClick={submitLogOut}
+          >Log Out</NavLink>
         </div>
       )      
     }
     return (
       <div>            
-        <Button
+        <NavLink
           color="inherit"
-          onClick={handleLogin}
-        >Login</Button>
+          to='/login'
+        >Login</NavLink>
       </div>
     )
 
@@ -64,17 +44,17 @@ function NavBar(props) {
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
-          <Button edge="start" color="inherit" aria-label="Title" onClick={redirectHome}>
+          <NavLink edge="start" color="inherit" aria-label="Title" to='/'>
             <Typography className={classes.grow} noWrap>
               Garden Guru 
             </Typography>  
-          </Button>
+          </NavLink>
           <div className={classes.grow} />
 
          
 
           <SearchBar {...props} className={classes.grow} />
-          <div className={classes.grow} />
+            <div className={classes.grow} />
           <UserActions {...props}/>
          
           
@@ -90,4 +70,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {submitLogOut, verifyAuth})(NavBar)
+export default connect(mapStateToProps, {submitLogOut })(NavBar)

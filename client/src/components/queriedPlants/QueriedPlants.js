@@ -33,7 +33,7 @@ function ListItemLink(props) {
 function QueriedPlants(props) {  
     const classes = useStyles()
 
-    console.log('navbar')
+    console.log('query')
     React.useEffect (()=>{
       console.log('test')
     }, [])
