@@ -49,14 +49,11 @@ function NavBar(props) {
             </Typography>  
           </Button>
           <div className={classes.grow} />
-
          
-
           <SearchBar {...props} className={classes.grow} />
             <div className={classes.grow} />
           <UserActions {...props}/>
-         
-          
+
         </Toolbar>
       </AppBar>
     </div>
