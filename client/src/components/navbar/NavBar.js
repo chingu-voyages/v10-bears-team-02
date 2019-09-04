@@ -36,7 +36,6 @@ function NavBar(props) {
         <Button className={classes.button} color="inherit" to='/login' component={NavLink}>Login</Button>                 
       </div>
     )
-
   }
 
   return (
