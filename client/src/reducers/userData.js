@@ -5,8 +5,7 @@ const initialState = {
     currentPlant: {
         name: '',
         perennial: null
-    },
-    authenticated: false
+    }
 }
 
 export default (state = initialState, action) => {

@@ -10,15 +10,12 @@ import SignUp from './components/signUpForm/SignUp'
 //import { connect } from 'react-redux';
 import { Route } from "react-router-dom";
 
-
-
-
-function App(props) {
+function App() {
   
  
   return (
-    <div className="App"> 
-      <Route path="*" render={props => <NavBar {...props} />} />
+    <div className="App">            
+      <Route path="/" render={props => <NavBar {...props}/>} />
       <Route exact path="/" render={props => (
           <HomePage {...props} />
       )} /> 

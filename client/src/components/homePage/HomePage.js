@@ -26,7 +26,7 @@ function Layout(props) {
 
 function HomePage(props) {
   const classes = useStyles();
-
+  console.log('home')
   function handleSignUp() {
     props.history.push("/signup")
   }
