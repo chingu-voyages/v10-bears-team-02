@@ -15,7 +15,7 @@ function connect(){
             resolve(database)        
            
        }else{
-           mongoose.connect(process.env.MONGO_ATLAS_URI, {useNewUrlParser: true, dbName: 'GardenGuru'}).then(()=>{
+           mongoose.connect(process.env.MONGO_ATLAS_URI, {useNewUrlParser: true, useFindAndModify: false,  dbName: 'GardenGuru'}).then(()=>{
                //mongoose connect resolves to undefined set db manually
                 let userSchema = new Schema({
                     email: String, //unique name works as indentifier

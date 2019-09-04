@@ -57,9 +57,15 @@ export const fetchPlantStats = (id) => {
 export const addPlant = (plant) => {
     return (dispatch) => {
         return axios.post('/api/library/create', {plant: plant})
-        .then(
-            dispatch(addPlantSuccess(plant))
-        )
+        .then(response =>{
+            console.log(response)
+            if(!response.data.err){
+                dispatch(addPlantSuccess(plant))
+            }else{
+                console.log(response.data.err)
+            }                    
+
+        })
     }
 }
 

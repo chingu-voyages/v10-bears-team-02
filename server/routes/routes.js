@@ -88,16 +88,30 @@ function routes(err,doc,app){
           // find doc.update 
           router.route('/api/library/create')
           .post((req,res) => {
-            doc.findOneAndUpdate({
-              email: req.user.email
-            },
-            {
-              $push: {
-                plantsLibrary: req.body.plant
+            doc.findOne({
+              email:req.user.email
+            }, function(err, user){
+             
+              let x = user.plantsLibrary.findIndex((plant)=>{
+                return plant.meta.id === req.body.plant.meta.id
+              })
+              if(x === -1){
+                doc.findOneAndUpdate({
+                  email: req.user.email
+                },
+                {
+                  $push: {
+                    plantsLibrary: req.body.plant
+                  }
+                },
+                function(err,user){               
+                  return res.send({user,err})
+                })
+              }else{            
+                //plant is already in my library             
+                return res.send({err: 'already exists in library '})
               }
-            },
-            function(err,user){
-            res.send({user,err})
+
             })
           })
 
