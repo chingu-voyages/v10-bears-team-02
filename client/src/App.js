@@ -10,9 +10,6 @@ import SignUp from './components/signUpForm/SignUp'
 //import { connect } from 'react-redux';
 import { Route } from "react-router-dom";
 
-
-
-
 function App() {
   
  
