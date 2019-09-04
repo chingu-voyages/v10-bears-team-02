@@ -3,7 +3,8 @@ import AppBar from '@material-ui/core/AppBar';
 import useStyles from './NavBarStyles'
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { NavLink } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router-dom'
+
 import { connect } from 'react-redux';
 import SearchBar from '../searchBar/SearchBar';
 import { submitLogOut } from '../../actions/logout'
@@ -13,7 +14,18 @@ import Button from '@material-ui/core/Button';
 function NavBar(props) {
   const classes = useStyles();
   
-  const {submitLogOut} = props  
+  const {submitLogOut, icon, primary, to} = props  
+
+  const renderLink = React.useMemo(
+    () =>
+      React.forwardRef((itemProps, ref) => (
+        // with react-router-dom@^5.0.0 use `ref` instead of `innerRef`
+        <RouterLink to={to} {...itemProps} ref={ref} />
+      )),
+    [to],
+  );
+
+
 
   function UserActions(props) {
     const loggedIn = props.auth
@@ -21,10 +33,11 @@ function NavBar(props) {
     if (loggedIn) {
       return (
         <div>            
-          <Button className={classes.button} to='/mygarden' color="inherit" component={NavLink}>My Garden</Button>        
+          <Button component={renderLink} color="inherit" className={classes.button} to='/mygarden'>My Garden</Button>        
           <Button
+            className={classes.button}
+            component={renderLink}
             color="inherit"
-            component={NavLink}
             to='/'
             onClick={submitLogOut}
           >Log Out</Button>
@@ -33,7 +46,7 @@ function NavBar(props) {
     }
     return (
       <div>  
-        <Button className={classes.button} color="inherit" to='/login' component={NavLink}>Login</Button>                 
+        <Button className={classes.button} color="inherit" to='/login' component={renderLink}>Login</Button>                 
       </div>
     )
   }
@@ -42,8 +55,8 @@ function NavBar(props) {
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
-          <Button edge="start" color="inherit" aria-label="Title" to='/' component={NavLink}>
-            <Typography className={classes.grow} noWrap>
+          <Button edge="start" color="inherit" aria-label="Title" to='/' component={renderLink}>
+            <Typography noWrap>
               Garden Guru 
             </Typography>  
           </Button>
