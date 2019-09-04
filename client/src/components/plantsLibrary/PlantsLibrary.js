@@ -19,7 +19,7 @@ import { loadUserData } from '../../actions/plantStats';
 
 function PlantsLibrary(props) {
 
-  const {loadUserData} = props
+  const {loadUserData, auth} = props
 
   useEffect(() => {
     loadUserData()
@@ -29,6 +29,10 @@ function PlantsLibrary(props) {
   // const cards = props.plants;
   const plants = props.plants;
   const classes = useStyles();
+
+  if(!auth){
+    props.history.push('/')
+  }
   return (
     <React.Fragment>
       <CssBaseline />
@@ -104,7 +108,8 @@ function PlantsLibrary(props) {
 const mapStateToProps = (state) => {
   return {
     plants: state.userData.plantsLibrary,
-    nickname: state.userData.nickname
+    nickname: state.userData.nickname, 
+    auth: state.userData.authenticated
   }
 }
 
